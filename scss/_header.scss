@@ -1,0 +1,86 @@
+@import "../scss/mixins";
+@import "../scss/vars";
+
+.header {
+    z-index: 999;
+    background-color: #343636;
+
+    .header__top {
+        background-color: #2D2D33;
+    }
+}
+
+.fa-angle-right {
+    color: $danger;
+    opacity: 0;
+    transition: .3s;
+}
+
+.fa-angle-down {
+    color: $danger;
+}
+
+a:hover .fa-angle-right {
+    visibility: visible;
+    opacity: .8;
+    transition: .3s;
+}
+
+@include media-dw(768px) {
+    .menu {
+        z-index: 999;
+        position: absolute;
+        background-color: #202025;
+        margin-left: -100%;
+        list-style: none;
+        transition: all 0.3s;
+    }
+}
+
+
+
+.menu-active {
+    margin-left: 0;
+}
+
+.submenu {
+    z-index: 998;
+    position: absolute;
+    background-color: #2d2d33;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.3s;
+}
+
+.menu li:hover .submenu {
+    visibility: visible;
+    opacity: 1;
+    transition: all 0.3s;
+}
+
+.search {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #ffffff;
+    background: #ffffff;
+    color: rgb(0, 0, 0);
+    border-radius: 5px;
+    width: 100%;
+    @include media-up(768px){
+        width: 40%;
+    }
+
+    .searchTerm {
+        width: 100%;
+        border: 3px solid #ffffff;
+        padding: 5px;
+        height: 45px;
+    }
+
+    .searchButton {
+        border: 1px solid #ffffff;
+        cursor: pointer;
+        text-align: center;
+        font-size: 25px;
+    }
+}
