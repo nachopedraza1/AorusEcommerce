@@ -21,10 +21,10 @@ class Producto {
 
 let productos = [
     { nombre: "Motherboard Gigabyte B660M DS3H DDR4 S1700", precio: 28000, img: "img/productos/mother-1.png" },
-    { nombre: "Motherboard Gigabyte B660M DS3H DDR4 S1700", precio: 28000, img: "img/productos/mother-2.png" },
-    { nombre: "Motherboard Gigabyte B660M DS3H DDR4 S1700", precio: 28000, img: "img/productos/mother-3.png" },
-    { nombre: "Motherboard Gigabyte B660M DS3H DDR4 S1700", precio: 28000, img: "img/productos/mother-1.png" },
-    { nombre: "Motherboard Gigabyte B660M DS3H DDR4 S1700", precio: 28000, img: "img/productos/mother-2.png" }
+    { nombre: "s Gigabyte B660M DS3H DDR4 S1700", precio: 28000, img: "img/productos/mother-2.png" },
+    { nombre: "s B660M DS3H DDR4 S1700", precio: 28000, img: "img/productos/mother-3.png" },
+    { nombre: "s B660M DS3H DDR4 S1700", precio: 28000, img: "img/productos/mother-1.png" },
+    { nombre: "sGigabyte B660M DS3H DDR4 S1700", precio: 28000, img: "img/productos/mother-2.png" }
 ];
 
 for (const producto of productos) {
@@ -39,6 +39,11 @@ for (const producto of productos) {
 
     productoCard.append(card);
 }
+
+let filtro = prompt("Ingrese el nombre del producto a buscar");
+
+let filtrados = productos.filter(producto => producto.nombre.includes(filtro));
+console.log(filtrados);
 
 
 
