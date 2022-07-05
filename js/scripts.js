@@ -21,17 +21,17 @@ class Producto {
 
 let productos = [
     { nombre: "Motherboard Gigabyte B660M DS3H DDR4 S1700", precio: 28000, img: "img/productos/mother-1.png" },
-    { nombre: "s Gigabyte B660M DS3H DDR4 S1700", precio: 28000, img: "img/productos/mother-2.png" },
-    { nombre: "s B660M DS3H DDR4 S1700", precio: 28000, img: "img/productos/mother-3.png" },
-    { nombre: "s B660M DS3H DDR4 S1700", precio: 28000, img: "img/productos/mother-1.png" },
-    { nombre: "sGigabyte B660M DS3H DDR4 S1700", precio: 28000, img: "img/productos/mother-2.png" }
+    { nombre: "Motherboard Gigabyte B660M DS3H DDR4 S1700", precio: 28000, img: "img/productos/mother-2.png" },
+    { nombre: "Motherboard Gigabyte B660M DS3H DDR4 S1700", precio: 28000, img: "img/productos/mother-3.png" },
+    { nombre: "Motherboard Gigabyte B660M DS3H DDR4 S1700", precio: 28000, img: "img/productos/mother-1.png" },
+    { nombre: "Motherboard Gigabyte B660M DS3H DDR4 S1700", precio: 28000, img: "img/productos/mother-2.png" }
 ];
 
 for (const producto of productos) {
     let productoCard = document.querySelector("#productosBox");
     let card = document.createElement("div");
     card.className = "border rounded-1 box-shw row col-6 col-sm-3 p-0";
-    card.innerHTML = `<div><img src="${producto.img}" class="card-img-bottom bg-black" alt="..."></div>
+    card.innerHTML = `<div><img src="${producto.img}" class="card-img-bottom" alt="..."></div>
                     <div class="card-body p-2">
                         <h5 class="card-title">${"$"+producto.precio}</h5>
                         <p class="card-text">${producto.nombre}</p>
