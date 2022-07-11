@@ -55,32 +55,54 @@ a:hover .fa-angle-right {
 .menu li:hover .submenu {
     visibility: visible;
     opacity: 1;
-    transition: all 0.3s;
+    transition: all 0.4s;
 }
 
 .search {
-    display: flex;
-    justify-content: space-between;
+    position: relative;
     border: 1px solid #ffffff;
     background: #ffffff;
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
     border-radius: 5px;
     width: 100%;
-    @include media-up(768px){
+
+    @include media-up(768px) {
         width: 40%;
     }
 
     .searchTerm {
         width: 100%;
-        border: 3px solid #ffffff;
+        border: none;
         padding: 5px;
         height: 45px;
+        outline: none;
     }
 
     .searchButton {
-        border: 1px solid #ffffff;
+        border: none;
         cursor: pointer;
         text-align: center;
         font-size: 25px;
+    }
+
+    .subBusqueda {
+        z-index: 1;
+        width: 100%;
+        outline: 1px solid #ffffff;
+        position: absolute;
+        border-top-left-radius: 0px;
+        border-top-right-radius: 0px;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        background: #ffffff;
+        visibility: hidden;
+        opacity: 0;
+        transition: all 0.3s;
+    }
+
+    .active {
+        visibility: visible;
+        opacity: 1;
+        transition: all 0.3s;
     }
 }

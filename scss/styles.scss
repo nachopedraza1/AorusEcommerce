@@ -1,13 +1,12 @@
-$primary: white;
+$primary: #37373f;
 $danger: #FF6400;
 $dark : #2d2d33;
+
 $accordion-button-color: $danger;
 $btn-close-color: $danger;
 $link-hover-color:$danger;
 
-.offcanvas-body{
-  height: 10px;
-}
+
 
 @import "../scss/header";
 @import "../scss/main";
@@ -33,3 +32,17 @@ $link-hover-color:$danger;
     src: url(https://fonts.gstatic.com/s/titilliumweb/v15/NaPDcZTIAOhVxoMyOr9n_E7ffGjEGItzYw.woff2) format('woff2');
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
   }
+
+  @each $breakpoint in map-keys($grid-breakpoints) {
+    @include media-breakpoint-up($breakpoint) {
+        $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+        @each $prop, $abbrev in (background-color: bg, color: text) {
+            @each $theme-color,
+            $length in $theme-colors {
+                .#{$abbrev}#{$infix}-#{$theme-color} {
+                    #{$prop}: $length !important;
+                }
+            }
+        }
+    }
+}

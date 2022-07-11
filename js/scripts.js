@@ -11,44 +11,40 @@ btnMenu.addEventListener("click", function () {
     menu.classList.toggle("menu-active");
 });
 
-
-class Producto {
-    constructor(nombre, precio) {
-        this.nombre = nombre;
-        this.precio = precio;
-    }
-}
-
 let productos = [
     { nombre: "Motherboard Gigabyte B660M DS3H DDR4 S1700", precio: 28000, img: "img/productos/mother-1.png" },
     { nombre: "Motherboard Gigabyte B660M DS3H DDR4 S1700", precio: 28000, img: "img/productos/mother-2.png" },
-    { nombre: "Motherboard Gigabyte B660M DS3H DDR4 S1700", precio: 28000, img: "img/productos/mother-3.png" },
-    { nombre: "Motherboard Gigabyte B660M DS3H DDR4 S1700", precio: 28000, img: "img/productos/mother-1.png" },
-    { nombre: "Motherboard Gigabyte B660M DS3H DDR4 S1700", precio: 28000, img: "img/productos/mother-2.png" }
+    { nombre: "Disco Gigabyte B660M DS3H DDR4 S1700", precio: 28000, img: "img/productos/mother-3.png" },
+    { nombre: "Disco Gigabyte B660M DS3H DDR4 S1700", precio: 28000, img: "img/productos/mother-1.png" },
+    { nombre: "Disco Gigabyte B660M DS3H DDR4 S1700", precio: 28000, img: "img/productos/mother-2.png" }
 ];
 
-for (const producto of productos) {
-    let productoCard = document.querySelector("#productosBox");
-    let card = document.createElement("div");
-    card.className = "border rounded-1 box-shw row col-6 col-sm-3 p-0";
-    card.innerHTML = `<div><img src="${producto.img}" class="card-img-bottom" alt="..."></div>
-                    <div class="card-body p-2">
-                        <h5 class="card-title">${"$"+producto.precio}</h5>
-                        <p class="card-text">${producto.nombre}</p>
-                    </div>`;
+let buscador = document.getElementsByClassName("searchTerm");
+let resultado = document.getElementsByClassName("subBusqueda");
 
-    productoCard.append(card);
+for (const search of buscador) {
+    search.addEventListener("keyup", filtro);
 }
 
-let filtro = prompt("Ingrese el nombre del producto a buscar");
-
-let filtrados = productos.filter(producto => producto.nombre.includes(filtro));
-console.log(filtrados);
-
-
-
-
-
-
+function filtro(filters) {
+    let search = filters.target;
+    let texto = search.value.toLowerCase();
+    let filtroProd = productos.filter(producto => producto.nombre.toLowerCase().includes(texto));
+    for (const result of resultado) {
+        result.innerHTML = "";
+        for (const producto of filtroProd) {
+            if (filtroProd.length === 0) {
+                result.classList.remove("active");
+                result.innerHTML = "";
+            } else if (texto == "") {
+                result.classList.remove("active");
+                result.innerHTML = "";
+            } else {
+                result.classList.add("active");
+                result.innerHTML += `<li class ="text-danger"> ${producto.nombre} </li>`
+            }
+        }
+    }
+}
 
 
