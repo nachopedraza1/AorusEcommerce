@@ -52,6 +52,8 @@ let productos = [
 ];
 
 let carrito = [];
+localStorage = carrito;
+console.log(carrito);
 
 //----------------------------------------------------
 //------------------Barra de busqueda-----------------
