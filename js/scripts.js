@@ -52,7 +52,7 @@ let productos = [
 ];
 
 let carrito = [];
-
+const listaCarrito = (clave, valor) => { localStorage.setItem(clave, valor)};
 //----------------------------------------------------
 //------------------Barra de busqueda-----------------
 //----------------------------------------------------
@@ -129,6 +129,7 @@ const agregarAlCarrito = (prodId) => {
 const actualizarCarrito = () => {
     carritoContainer.innerHTML = "";
     contador.innerText = carrito.length;
+
     if (carrito.length >= 1) {
         total.classList.remove("d-none")
         carritoContainer.innerHTML = `<tr class="text-center f-gef fs-5">
@@ -150,6 +151,8 @@ const actualizarCarrito = () => {
                         <td><button class="btn text-warning fs-5" id="eliminar${producto.id}"><i class="fa-solid fa-trash-can"></i></button></td>`;
         carritoContainer.append(tr);
 
+        listaCarrito(producto.id, JSON.stringify(producto));
+        
         let btnEliminar = document.getElementById(`eliminar${producto.id}`);
         btnEliminar.addEventListener("click", () => {
             eliminarProd(producto.id);
@@ -178,9 +181,9 @@ const eliminarProd = (prodId) => {
 
 const vaciarCarrito = () => {
     carrito.length = 0;
+    localStorage.clear();
     actualizarCarrito();
 }
-
 
 //----------------------------------------------------
 //-----------------Mostrar Productos------------------
