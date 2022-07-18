@@ -54,7 +54,8 @@
             <div class="d-flex align-items-center f-ddn text-white">
                 <p class="fs-5 m-0 px-1">Bienvenido/a Usuario</p>
                 <i class="fs-4 fa-solid fa-heart px-2 text-danger"></i>
-                <i class="fs-4 fa-solid fa-cart-shopping px-2 text-danger"></i>
+                <i class="fs-4 fa-solid fa-cart-shopping px-2 text-danger" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"></i>
             </div>
         </div>
         <div
@@ -71,73 +72,19 @@
                     <ul class="menu me-auto mb-0 justify-content-center w-100 list-unstyled d-md-flex align-items-center f-ddn fs-5"
                         id="menu">
                         <li class="nav-item d-md-none">
-                            <div class="accordion accordion-flush" id="accordionFlushExample">
-                                <div class="accordion-item bg-transparent p-2 px-3">
-                                    <a class="accordion-button collapsed bg-transparent nav-link text-white p-0 fs-5"
-                                        type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne"
-                                        aria-expanded="false" aria-controls="flush-collapseOne">
-                                        Productos
-                                    </a>
-                                    <div id="flush-collapseOne" class="accordion-collapse collapse"
-                                        aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                                        <div
-                                            class="accordion-body  p-0 border-1 border-top border-bottom border-danger">
-                                            <a class="nav-link text-white" href=""><i
-                                                    class="fa-solid fa-angle-right"></i>
-                                                Motherboards</a>
-                                            <a class="nav-link text-white" href=""><i
-                                                    class="fa-solid fa-angle-right"></i>
-                                                Microprocesadores</a>
-                                            <a class="nav-link text-white" href=""><i
-                                                    class="fa-solid fa-angle-right"></i>
-                                                Memorias Ram</a>
-                                            <a class="nav-link text-white" href=""><i
-                                                    class="fa-solid fa-angle-right"></i>
-                                                Placas de Video</a>
-                                            <a class="nav-link text-white" href=""><i
-                                                    class="fa-solid fa-angle-right"></i>
-                                                Monitores</a>
-                                            <a class="nav-link text-white" href=""><i
-                                                    class="fa-solid fa-angle-right"></i>
-                                                Fuentes</a>
-                                            <a class="nav-link text-white" href=""><i
-                                                    class="fa-solid fa-angle-right"></i>
-                                                Refrigeracion</a>
-                                            <a class="nav-link text-white" href=""><i
-                                                    class="fa-solid fa-angle-right"></i>
-                                                Gabinetes</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <a class="nav-link text-white fs-5" href="pages/productos.html">Productos</a>
                         </li>
 
                         <li class="nav-item d-none d-md-block">
-                            <a class="nav-link text-dark" href="">Productos <i
-                                    class="fa-solid fa-angle-down  px-2"></i><span
-                                    class="text-danger px-2 d-none d-md-inline">|</span></a>
-                            <ul class="submenu p-0 border-1 border-top border-bottom border-danger bg-light">
-                                <a class="nav-link text-dark" href=""><i class="fa-solid fa-angle-right"></i>
-                                    Motherboards</a>
-                                <a class="nav-link text-dark" href=""><i class="fa-solid fa-angle-right"></i>
-                                    Microprocesadores</a>
-                                <a class="nav-link text-dark" href=""><i class="fa-solid fa-angle-right"></i>
-                                    Memorias Ram</a>
-                                <a class="nav-link text-dark" href=""><i class="fa-solid fa-angle-right"></i>
-                                    Placas de Video</a>
-                                <a class="nav-link text-dark" href=""><i class="fa-solid fa-angle-right"></i>
-                                    Monitores</a>
-                                <a class="nav-link text-dark" href=""><i class="fa-solid fa-angle-right"></i>
-                                    Fuentes</a>
-                                <a class="nav-link text-dark" href=""><i class="fa-solid fa-angle-right"></i>
-                                    Refrigeracion</a>
-                                <a class="nav-link text-dark" href=""><i class="fa-solid fa-angle-right"></i>
-                                    Gabinetes</a>
-                            </ul>
+                            <a class="nav-link text-dark" href="pages/productos.html"><i
+                                    class="fa-solid fa-computer px-2 text-danger"></i> Productos</a>
                         </li>
 
+                        <li class="d-none d-md-block">
+                            <span class="text-danger fs-4">|</span>
+                        </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white text-md-dark" href="#">Inicio</a>
+                            <a class="nav-link text-white text-md-dark" href="index.html">Inicio</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-white text-md-dark" href="#">Notebooks</a>
@@ -176,9 +123,26 @@
                         </div>
                     </div>
                 </div>
-                <i class="fa-solid fa-cart-plus fs-2 text-danger px-2"></i>
+                <i class="fa-solid fa-cart-shopping fs-2 text-danger px-2" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"></i>
             </div>
         </div>
+        <!-- Offcanvas carrito-->
+        <div class="offcanvas offcanvas-end bg-primary text-white" tabindex="-1" id="offcanvasRight"
+            aria-labelledby="offcanvasRightLabel">
+            <div class="offcanvas-header">
+                <h5 class="f-gef" id="offcanvasRightLabel">Carrito de Compras</h5>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                    aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <table id="carritoContainer">
+
+                </table>
+                <h5 class="d-none text-end" id="sumaTotal">Total</h5>
+            </div>
+        </div>
+        <!-- Fin Offcanvas carrito-->
     </header>
     <section class="slider mb-4">
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
@@ -358,14 +322,6 @@
                 </div>
 
             </div>
-        </div>
-    </section>
-
-    <section class="container-xxl mt-3 f-ddn">
-        <h2>Destacados</h2>
-        <div class="row text-start justify-content-around gap-2" id="productosBox">
-            <!-- JS PRODUCTOS -->
-
         </div>
     </section>
 

@@ -25,3 +25,34 @@
     bottom: 0;
     margin: 0 auto;
 }
+
+.flex-custom{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 7px;
+    }
+
+.column-custom{
+    width: 48%;
+    display: flex;
+    align-items:center;
+    }
+
+.thumb{
+    position: relative;
+    width: 100%;
+    padding-bottom: 80%;
+    }
+
+.img-contained {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    max-width: 100%;
+    max-height: 100%;
+    }
+

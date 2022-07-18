@@ -1,12 +1,11 @@
 $primary: #37373f;
 $danger: #FF6400;
 $dark : #2d2d33;
+$warning : red;
 
 $accordion-button-color: $danger;
 $btn-close-color: $danger;
 $link-hover-color:$danger;
-
-
 
 @import "../scss/header";
 @import "../scss/main";
