@@ -92,6 +92,10 @@ let productosContainer = document.getElementById("productosContainer");
 let carritoContainer = document.getElementById("carritoContainer");
 let total = document.getElementById("sumaTotal");
 
+let contador = document.getElementById("contador");
+contador.innerText = carrito.length;
+
+
 const mostrarProductos = (prodCaract) => {
     let filtro = productos.filter(producto => producto.categoria === prodCaract);
     filtro.forEach(producto => {
@@ -124,6 +128,7 @@ const agregarAlCarrito = (prodId) => {
 
 const actualizarCarrito = () => {
     carritoContainer.innerHTML = "";
+    contador.innerText = carrito.length;
     if (carrito.length >= 1) {
         total.classList.remove("d-none")
         carritoContainer.innerHTML = `<tr class="text-center f-gef fs-5">
