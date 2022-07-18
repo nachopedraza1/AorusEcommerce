@@ -51,7 +51,7 @@ let productos = [
     { id: 24, nombre: "MICROPROCESADOR AMD RYZEN 9 5950X", precio: 138990, img: "../img/productos/micro-12.png", categoria: "microprocesadores", cantidad: 1 },
 ];
 
-let carrito = [];
+let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 const listaCarrito = (clave, valor) => { localStorage.setItem(clave, valor)};
 //----------------------------------------------------
 //------------------Barra de busqueda-----------------
@@ -150,14 +150,13 @@ const actualizarCarrito = () => {
                         <td class="col-3 text-danger">$${producto.precio}</td>
                         <td><button class="btn text-warning fs-5" id="eliminar${producto.id}"><i class="fa-solid fa-trash-can"></i></button></td>`;
         carritoContainer.append(tr);
-
-        listaCarrito(producto.id, JSON.stringify(producto));
         
         let btnEliminar = document.getElementById(`eliminar${producto.id}`);
         btnEliminar.addEventListener("click", () => {
             eliminarProd(producto.id);
         });
     });
+    listaCarrito("carrito", JSON.stringify(carrito));
 }
 
 const totalCarrito = () => {
@@ -185,6 +184,9 @@ const vaciarCarrito = () => {
     actualizarCarrito();
 }
 
+
+actualizarCarrito();
+totalCarrito();
 //----------------------------------------------------
 //-----------------Mostrar Productos------------------
 //----------------------------------------------------
