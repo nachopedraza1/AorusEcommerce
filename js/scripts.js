@@ -51,8 +51,9 @@ let productos = [
     { id: 24, nombre: "MICROPROCESADOR AMD RYZEN 9 5950X", precio: 138990, img: "../img/productos/micro-12.png", categoria: "microprocesadores", cantidad: 1 },
 ];
 
-let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-const listaCarrito = (clave, valor) => { localStorage.setItem(clave, valor)};
+let carrito = JSON.parse(sessionStorage.getItem("carrito")) || [];
+const listaCarrito = (clave, valor) => { sessionStorage.setItem(clave, valor)};
+
 //----------------------------------------------------
 //------------------Barra de busqueda-----------------
 //----------------------------------------------------
@@ -87,14 +88,18 @@ function filtro(filters) {
 //----------------------------------------------------
 //------------------Productos-------------------------
 //----------------------------------------------------
-
 let productosContainer = document.getElementById("productosContainer");
 let carritoContainer = document.getElementById("carritoContainer");
 let total = document.getElementById("sumaTotal");
 
-let contador = document.getElementById("contador");
-contador.innerText = carrito.length;
+let contadores = document.querySelectorAll("#contador");
 
+
+const contador = () => {
+    contadores.forEach(contador => {
+        contador.innerText = carrito.length;
+    });
+}
 
 const mostrarProductos = (prodCaract) => {
     let filtro = productos.filter(producto => producto.categoria === prodCaract);
@@ -128,7 +133,6 @@ const agregarAlCarrito = (prodId) => {
 
 const actualizarCarrito = () => {
     carritoContainer.innerHTML = "";
-    contador.innerText = carrito.length;
 
     if (carrito.length >= 1) {
         total.classList.remove("d-none")
@@ -157,6 +161,7 @@ const actualizarCarrito = () => {
         });
     });
     listaCarrito("carrito", JSON.stringify(carrito));
+    contador();
 }
 
 const totalCarrito = () => {
@@ -183,6 +188,7 @@ const vaciarCarrito = () => {
     localStorage.clear();
     actualizarCarrito();
 }
+
 
 
 actualizarCarrito();
