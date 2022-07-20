@@ -1,7 +1,7 @@
 //----------------------------------------------------
 //------------------Menus-----------------------------
 //----------------------------------------------------
-const hamburger = document.querySelector(".hamburger");
+var hamburger = document.querySelector(".hamburger");
 hamburger.addEventListener("click", function () {
     hamburger.classList.toggle("is-active")
 });
@@ -13,7 +13,7 @@ btnMenu.addEventListener("click", function () {
     menu.classList.toggle("menu-active");
 });
 
-const acordionQuit = document.getElementById("flush-collapseOne");
+let acordionQuit = document.getElementById("flush-collapseOne");
 acordionQuit.addEventListener("click", () => {
     hamburger.classList.remove("is-active");
     menu.classList.remove("menu-active");
@@ -51,8 +51,9 @@ let productos = [
     { id: 24, nombre: "MICROPROCESADOR AMD RYZEN 9 5950X", precio: 138990, img: "../img/productos/micro-12.png", categoria: "microprocesadores", cantidad: 1 },
 ];
 
-let carrito = JSON.parse(sessionStorage.getItem("carrito")) || [];
-const listaCarrito = (clave, valor) => { sessionStorage.setItem(clave, valor) };
+let carrito = [];
+localStorage = carrito;
+console.log(carrito);
 
 //----------------------------------------------------
 //------------------Barra de busqueda-----------------
@@ -88,22 +89,11 @@ function filtro(filters) {
 //----------------------------------------------------
 //------------------Productos-------------------------
 //----------------------------------------------------
+
 let productosContainer = document.getElementById("productosContainer");
 let carritoContainer = document.getElementById("carritoContainer");
 let total = document.getElementById("sumaTotal");
-let contadores = document.querySelectorAll("#contador");
 
-
-//-------Funcion Contador Carrito---------->
-const contador = () => {
-    contadores.forEach(contador => {
-        contador.innerText = carrito.length;
-    });
-}
-//-------Fin Contador Carrito---------->
-
-
-//-------Funcion Mostrar Productos---------->
 const mostrarProductos = (prodCaract) => {
     let filtro = productos.filter(producto => producto.categoria === prodCaract);
     filtro.forEach(producto => {
@@ -125,45 +115,17 @@ const mostrarProductos = (prodCaract) => {
         });
     });
 }
-//-------Fin Mostrar Productos---------->
 
 
-//-------Funcion Agregar Carrito---------->
 const agregarAlCarrito = (prodId) => {
-    //-------Alerta----------->
-    Swal.fire({
-        position: 'top-end',
-        icon: 'success',
-        title: 'Producto agregado al carrito',
-        showConfirmButton: false,
-        timer: 2000,
-        toast: true
-    })
-    //-------Fin Alerta----------->
-    const existe = carrito.some(producto => producto.id === prodId);
-    if(existe){
-        let producto = carrito.map(producto =>{
-            if(producto.id === prodId){
-                producto.cantidad++;
-                producto.precio *= producto.cantidad;
-                totalCarrito();
-            }
-        })
-    }else{
-        let producto = productos.find(producto => producto.id === prodId)
-        carrito.push(producto);
-        totalCarrito();
-    }
+    let producto = productos.find(producto => producto.id === prodId)
+    carrito.push(producto);
     actualizarCarrito();
+    totalCarrito();
 }
-//-------Fin Agregar Carrito---------->
 
-
-
-//-------Funcion Actualizar Carrito---------->
 const actualizarCarrito = () => {
     carritoContainer.innerHTML = "";
-
     if (carrito.length >= 1) {
         total.classList.remove("d-none")
         carritoContainer.innerHTML = `<tr class="text-center f-gef fs-5">
@@ -190,14 +152,8 @@ const actualizarCarrito = () => {
             eliminarProd(producto.id);
         });
     });
-    listaCarrito("carrito", JSON.stringify(carrito));
-    contador();
 }
-//-------Fin Actualizar Carrito---------->
 
-
-
-//-------Funcion Sumar Carrito---------->
 const totalCarrito = () => {
     let totalSuma = carrito.reduce((acc, prod) => acc + prod.precio, 0)
     total.innerHTML = `<button id="vaciarCarrito" class="btn btn-danger f-gef fs-6 text-white">Vaciar Carrito</button>
@@ -208,56 +164,25 @@ const totalCarrito = () => {
         vaciarCarrito();
     });
 }
-//-------Fin Sumar Carrito---------->
 
-
-//-------Funcion Eliminar Producto---------->
 const eliminarProd = (prodId) => {
-    //-------Alerta----------->
-    Swal.fire({
-        position: 'top-end',
-        icon: 'error',
-        title: 'Producto eliminado',
-        showConfirmButton: false,
-        timer: 2000,
-        toast: true
-    });
-    //-------Fin Alerta----------->
     let prodAEliminar = carrito.find(producto => producto.id === prodId)
     let indice = carrito.indexOf(prodAEliminar);
     carrito.splice(indice, 1);
     actualizarCarrito();
     totalCarrito();
 }
-//-------Fin Eliminar Producto---------->
 
-
-//-------Funcion Vaciar Carrito---------->
 const vaciarCarrito = () => {
-    //-------Alerta----------->
-    Swal.fire({
-        position: 'bottom-end',
-        icon: 'success',
-        title: 'El carrito de compras esta vacío.',
-        showConfirmButton: false,
-        timer: 2000,
-        toast: true
-    })
-    //-------Fin Alerta----------->
     carrito.length = 0;
-    sessionStorage.clear();
     actualizarCarrito();
 }
-//-------Fin Vaciar Carrito---------->
 
-
-
-actualizarCarrito();
-totalCarrito();
 
 //----------------------------------------------------
-//-----------------Menu Productos------------------
+//-----------------Mostrar Productos------------------
 //----------------------------------------------------
+
 let motherList = document.querySelectorAll("#motherList");
 let microList = document.querySelectorAll("#microList");
 
