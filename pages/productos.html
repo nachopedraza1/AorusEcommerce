@@ -207,7 +207,7 @@
                 <table id="carritoContainer">
 
                 </table>
-                <h5 class="d-none text-end" id="sumaTotal">Total</h5>
+                <h5 class="d-none text-end" id="totalCarrito">Total</h5>
             </div>
         </div>
         <!-- Fin Offcanvas carrito-->
@@ -220,7 +220,36 @@
             <!-- JS PRODUCTOS -->
         </div>
     </section>
-    
+
+    <section>
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title f-gef" id="exampleModalLabel">Descripcion de tu pedido:</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <table id="compraContainer">
+
+                        </table>
+                    </div>
+                    <div class="modal-footer border-top border-danger justify-content-center justify-content-md-between align-items-center">
+                        <div class="row gap-2 justify-content-center text-center">
+                            <h5 class="px-0">¿Tenés un cupón de descuento?</h5>
+                            <input class="col-6" type="text" placeholder="Codigo del cupón">
+                            <button class="col-3 btn btn-danger f-ddn" type="button">Aplicar</button>
+                        </div>
+                        <div >
+                            <h5 class="f-ddn">TOTAL: <b class="text-danger px-2" id="totalCompra"></b></h5>
+                            <button type="button" class="btn btn-danger px-5 f-ddn">Pagar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../libs/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="../js/jquery.min.js"></script>

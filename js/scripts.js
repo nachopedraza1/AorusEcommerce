@@ -90,7 +90,9 @@ function filtro(filters) {
 //----------------------------------------------------
 let productosContainer = document.getElementById("productosContainer");
 let carritoContainer = document.getElementById("carritoContainer");
-let total = document.getElementById("sumaTotal");
+let compraContainer = document.getElementById("compraContainer");
+let totalCarro = document.getElementById("totalCarrito");
+let totalCompra = document.getElementById("totalCompra");
 let contadores = document.querySelectorAll("#contador");
 
 
@@ -116,7 +118,7 @@ const mostrarProductos = (prodCaract) => {
                             <div class="w-100 p-1 bg-white">
                                 <h3 class="card-title">$${producto.precio}</h4>
                                 <p class="card-text" style="font-size: 14px">${producto.nombre}</p>
-                                <button class="btn btn-primary" id="boton${producto.id}">Comprar</button>
+                                <button class="btn btn-primary" id="boton${producto.id}"><i class="fa-solid fa-cart-plus"></i> Añadir</button>
                             </div>`;
         productosContainer.append(div);
         let boton = document.getElementById(`boton${producto.id}`);
@@ -141,17 +143,18 @@ const agregarAlCarrito = (prodId) => {
     })
     //-------Fin Alerta----------->
     const existe = carrito.some(producto => producto.id === prodId);
-    if(existe){
-        let producto = carrito.map(producto =>{
-            if(producto.id === prodId){
+    if (existe) {
+        const productoOriginal = productos.find(producto => producto.id === prodId)
+        carrito.map(producto => {
+            if (producto.id === prodId) {
                 producto.cantidad++;
-                producto.precio *= producto.cantidad;
+                producto.precio = productoOriginal.precio * producto.cantidad;
                 totalCarrito();
             }
         })
-    }else{
+    } else {
         let producto = productos.find(producto => producto.id === prodId)
-        carrito.push(producto);
+        carrito.push({ ...producto });
         totalCarrito();
     }
     actualizarCarrito();
@@ -163,9 +166,14 @@ const agregarAlCarrito = (prodId) => {
 //-------Funcion Actualizar Carrito---------->
 const actualizarCarrito = () => {
     carritoContainer.innerHTML = "";
-
+    compraContainer.innerHTML = `<tr class="text-center f-gef fs-5">
+                                <td>Cantidad</td>
+                                <td>Producto</td>
+                                <td>Precio</td>
+                                <td></td>
+                                </tr>`;
     if (carrito.length >= 1) {
-        total.classList.remove("d-none")
+        totalCarro.classList.remove("d-none")
         carritoContainer.innerHTML = `<tr class="text-center f-gef fs-5">
                                         <td>Producto</td>
                                         <td>Cantidad</td>
@@ -173,17 +181,24 @@ const actualizarCarrito = () => {
                                         <td></td>
                                     </tr>`;
     } else {
-        total.classList.add("d-none")
+        totalCarro.classList.add("d-none")
     }
 
     carrito.forEach(producto => {
-        let tr = document.createElement("tr")
-        tr.classList.add("text-center", "border-danger", "border-bottom", "border-top", "f-ddn");
-        tr.innerHTML = `<td class="col-5">${producto.nombre}</td>
+        let tablaCarrito = document.createElement("tr")
+        tablaCarrito.classList.add("text-center", "border-danger", "border-bottom", "border-top", "f-ddn");
+        tablaCarrito.innerHTML = `<td class="col-5">${producto.nombre}</td>
                         <td class="col-4">x${producto.cantidad}</td>
                         <td class="col-3 text-danger">$${producto.precio}</td>
                         <td><button class="btn text-warning fs-5" id="eliminar${producto.id}"><i class="fa-solid fa-trash-can"></i></button></td>`;
-        carritoContainer.append(tr);
+        carritoContainer.append(tablaCarrito);
+
+        let tablaCompra = document.createElement("tr");
+        tablaCompra.classList.add("text-center");
+        tablaCompra.innerHTML = `<td class="col-4"><img class="col-9 col-sm-4" src="${producto.img}" height="auto" width="100%"><b>x${producto.cantidad}</b></td>
+                            <td class="col-4">${producto.nombre}</td>
+                            <td class="col-4 text-danger">$${producto.precio}</td>`;
+        compraContainer.append(tablaCompra);
 
         let btnEliminar = document.getElementById(`eliminar${producto.id}`);
         btnEliminar.addEventListener("click", () => {
@@ -200,12 +215,21 @@ const actualizarCarrito = () => {
 //-------Funcion Sumar Carrito---------->
 const totalCarrito = () => {
     let totalSuma = carrito.reduce((acc, prod) => acc + prod.precio, 0)
-    total.innerHTML = `<button id="vaciarCarrito" class="btn btn-danger f-gef fs-6 text-white">Vaciar Carrito</button>
-                        <h3>Total: $${totalSuma}</h3>`;
+    totalCarro.classList.add("mt-3");
+    totalCarro.innerHTML = `<h3 class="f-ddn">Total : <b class="text-danger">$${totalSuma}</b></h3>
+                            <button id="vaciarCarrito" class="btn btn-danger f-gef fs-6 text-white">Vaciar Carrito</button>
+                            <button id="finalizarCompra" class="btn btn-danger f-gef fs-6 text-white" data-bs-toggle="modal" data-bs-target="#exampleModal">Finalizar Compra</button>`;
 
+    totalCompra.innerText = `$${totalSuma}`;
     let btnVaciar = document.getElementById("vaciarCarrito");
     btnVaciar.addEventListener("click", () => {
         vaciarCarrito();
+    });
+
+    let btnFinalizarCompra = document.getElementById("finalizarCompra");
+    let offcanvasCarrito = document.getElementById("offcanvasRight");
+    btnFinalizarCompra.addEventListener("click", () => {
+        offcanvasCarrito.classList.remove("show");
     });
 }
 //-------Fin Sumar Carrito---------->
@@ -252,6 +276,8 @@ const vaciarCarrito = () => {
 
 
 
+
+
 actualizarCarrito();
 totalCarrito();
 
@@ -275,5 +301,23 @@ microList.forEach(event => {
         mostrarProductos("microprocesadores");
     });
 });
+
+
+const ordenar = (caract) => {
+    let precios = [];
+    let prodcaract = productos.filter(producto => producto.categoria === caract);
+    prodcaract.forEach(producto => {
+        precios.push(producto.precio)
+        precios.sort((a,b)=>{
+            return b - a;
+        })
+    })
+    console.log(precios);
+}
+
+ordenar("microprocesadores");
+
+
+
 
 
