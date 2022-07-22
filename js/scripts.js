@@ -91,6 +91,7 @@ function filtro(filters) {
 let productosContainer = document.getElementById("productosContainer");
 let carritoContainer = document.getElementById("carritoContainer");
 let compraContainer = document.getElementById("compraContainer");
+let filters = document.getElementById("filters");
 let totalCarro = document.getElementById("totalCarrito");
 let totalCompra = document.getElementById("totalCompra");
 let contadores = document.querySelectorAll("#contador");
@@ -108,7 +109,15 @@ const contador = () => {
 //-------Funcion Mostrar Productos---------->
 const mostrarProductos = (prodCaract) => {
     let filtro = productos.filter(producto => producto.categoria === prodCaract);
+    
     filtro.forEach(producto => {
+        filters.innerHTML = `<h3>${producto.categoria.toUpperCase()}</h3>
+                            <select class="form-select mb-3" aria-label="Default select example">
+                                <option selected>Ordenar por:</option>
+                                <option value="1">Mayor precio</option>
+                                <option value="2">Menor precio</option>
+                                <option value="3">Marca</option>
+                            </select>`;
         let div = document.createElement("div");
         div.className = "card column-custom"
         div.id = `${producto.categoria}`
@@ -276,8 +285,6 @@ const vaciarCarrito = () => {
 
 
 
-
-
 actualizarCarrito();
 totalCarrito();
 
@@ -303,7 +310,7 @@ microList.forEach(event => {
 });
 
 
-const ordenar = (caract) => {
+/* const ordenar = (caract) => {
     let precios = [];
     let prodcaract = productos.filter(producto => producto.categoria === caract);
     prodcaract.forEach(producto => {
@@ -315,8 +322,7 @@ const ordenar = (caract) => {
     console.log(precios);
 }
 
-ordenar("microprocesadores");
-
+ordenar("microprocesadores"); */
 
 
 
