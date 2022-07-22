@@ -111,27 +111,17 @@ const mostrarProductos = (prodCaract) => {
     let filtro = productos.filter(producto => producto.categoria === prodCaract);
 
     filtro.forEach(producto => {
-        filters.classList.add("container-sm");
-        filters.innerHTML = `<h1 class="line"><span>${producto.categoria.toUpperCase()}</span></h1>
-                            <div class="d-flex justify-content-center justify-content-sm-end mt-3">
-                                <div class="col-12 col-sm-3">
-                                    <select class="form-select mb-3" aria-label="Default select example" id="select">
-                                        <option selected>Ordenar por:</option>
-                                        <option value="MayorPrecio">Mayor precio</option>
-                                        <option value="MenorPrecio">Menor precio</option>
-                                        <option value="Marca">Marca</option>
-                                    </select>
-                                </div>
-                            </div>`;
+        filters.classList.add("container-md");
+        filters.innerHTML = `<h1 class="line"><span>${producto.categoria.toUpperCase()}</span></h1>`;
 
         let div = document.createElement("div");
         div.className = "card column-custom"
         div.innerHTML = `   <div class="thumb img-back">
                                 <img src="${producto.img}" class="img-contained" alt="...">
                             </div>
-                            <div class="w-100 p-1 bg-white">
+                            <div class="w-100 h-100 p-1 bg-white d-flex flex-column justify-content-between">
                                 <h3 class="card-title">$${producto.precio}</h4>
-                                <p class="card-text" style="font-size: 14px">${producto.nombre}</p>
+                                <p class="card-text text-center" style="font-size: 14px">${producto.nombre}</p>
                                 <button class="btn btn-primary" id="boton${producto.id}"><i class="fa-solid fa-cart-plus"></i> Añadir</button>
                             </div>`;
         productosContainer.append(div);
@@ -155,9 +145,9 @@ const mostrarProductos = (prodCaract) => {
                     div.innerHTML = `<div class="thumb img-back">
                                         <img src="${producto.img}" class="img-contained" alt="...">
                                     </div>
-                                    <div class="w-100 p-1 bg-white">
-                                        <h3 class="card-title">$${producto.precio}</h4>
-                                        <p class="card-text" style="font-size: 14px">${producto.nombre}</p>
+                                    <div class="w-100 h-100 p-1 bg-white d-flex flex-column justify-content-between">
+                                    <h3 class="card-title">$${producto.precio}</h4>
+                                        <p class="card-text text-center" style="font-size: 14px">${producto.nombre}</p>
                                         <button class="btn btn-primary" id="boton${producto.id}"><i class="fa-solid fa-cart-plus"></i> Añadir</button>
                                     </div>`;
                     productosContainer.append(div);
@@ -175,9 +165,9 @@ const mostrarProductos = (prodCaract) => {
                     div.innerHTML = `<div class="thumb img-back">
                                         <img src="${producto.img}" class="img-contained" alt="...">
                                     </div>
-                                    <div class="w-100 p-1 bg-white">
+                                    <div class="w-100 h-100 p-1 bg-white d-flex flex-column justify-content-between">
                                         <h3 class="card-title">$${producto.precio}</h4>
-                                        <p class="card-text" style="font-size: 14px">${producto.nombre}</p>
+                                        <p class="card-text text-center" style="font-size: 14px">${producto.nombre}</p>
                                         <button class="btn btn-primary" id="boton${producto.id}"><i class="fa-solid fa-cart-plus"></i> Añadir</button>
                                     </div>`;
                     productosContainer.append(div);
@@ -363,7 +353,7 @@ microList.forEach(event => {
     });
 });
 
-
+mostrarProductos("microprocesadores");
 /* const ordenar = (caract) => {
     let precios = [];
     let prodcaract = productos.filter(producto => producto.categoria === caract);

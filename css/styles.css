@@ -185,6 +185,10 @@ a:hover .fa-angle-right {
   font-family: aorus;
 }
 
+.f-pri {
+  font-family: rajdhani;
+}
+
 .box-shw {
   box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
 }
@@ -211,11 +215,31 @@ a:hover .fa-angle-right {
   justify-content: center;
   gap: 7px;
 }
+@media screen and (min-width: 576px) {
+  .flex-custom {
+    gap: 7px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .flex-custom {
+    gap: 20px;
+  }
+}
 
 .column-custom {
   width: 48%;
   display: flex;
   align-items: center;
+}
+@media screen and (min-width: 576px) {
+  .column-custom {
+    width: 30%;
+  }
+}
+@media screen and (min-width: 768px) {
+  .column-custom {
+    width: 30%;
+  }
 }
 
 .thumb {
@@ -11365,6 +11389,10 @@ textarea.form-control-lg {
 @font-face {
   font-family: aorus;
   src: url(../fuentes/AORUS.woff);
+}
+@font-face {
+  font-family: rajdhani;
+  src: url(../fuentes/rajdhani-semibold.ttf);
 }
 @font-face {
   font-family: "Titillium Web";
