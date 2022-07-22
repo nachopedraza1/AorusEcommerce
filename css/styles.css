@@ -143,6 +143,32 @@ a:hover .fa-angle-right {
   }
 }
 
+.line {
+  color: #a0a0a0;
+  font-weight: lighter;
+  letter-spacing: 0;
+  margin: 20px 0 20px;
+  position: relative;
+  text-align: center;
+  max-width: 100%;
+  margin: 0 auto;
+}
+.line span {
+  background-color: #f2f2f2;
+  padding: 0 20px;
+  position: relative;
+}
+
+.line::before {
+  background: #FF6400 none repeat scroll 0 0;
+  content: "";
+  height: 1px;
+  left: 0;
+  position: absolute;
+  top: 51%;
+  width: 100%;
+}
+
 .bg-back {
   background-color: #232323;
 }

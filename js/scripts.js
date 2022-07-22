@@ -24,18 +24,18 @@ acordionQuit.addEventListener("click", () => {
 //------------------Lista de Productos----------------
 //----------------------------------------------------
 let productos = [
-    { id: 1, nombre: "MOTHERBOARD ASUS PRIME A520M-K AM4", precio: 15429, img: "../img/productos/mother-1.png", categoria: "motherboard", cantidad: 1 },
-    { id: 2, nombre: "MOTHERBOARD ASUS PRIME A520M-A II AM4", precio: 16049, img: "../img/productos/mother-2.png", categoria: "motherboard", cantidad: 1 },
-    { id: 3, nombre: "MOTHERBOARD GIGABYTE B460M DS3H V2 M-ATX", precio: 20789, img: "../img/productos/mother-3.png", categoria: "motherboard", cantidad: 1 },
-    { id: 4, nombre: "MOTHERBOARD GIGABYTE B450 GAMING X AM4", precio: 20999, img: "../img/productos/mother-4.png", categoria: "motherboard", cantidad: 1 },
-    { id: 5, nombre: "MOTHERBOARD ASROCK Z590 PHANTOM GAMING 4", precio: 33489, img: "../img/productos/mother-5.png", categoria: "motherboard", cantidad: 1 },
-    { id: 6, nombre: "MOTHERBOARD MSI B550M-A PRO AM4", precio: 34649, img: "../img/productos/mother-6.png", categoria: "motherboard", cantidad: 1 },
-    { id: 7, nombre: "MOTHERBOARD ASUS TUF GAMING B550M-PLUS", precio: 37269, img: "../img/productos/mother-7.png", categoria: "motherboard", cantidad: 1 },
-    { id: 8, nombre: "MOTHERBOARD MSI PRO Z690-A WIFI", precio: 45969, img: "../img/productos/mother-8.png", categoria: "motherboard", cantidad: 1 },
-    { id: 9, nombre: "MOTHERBOARD GIGABYTE B660M AORUS PRO", precio: 50819, img: "../img/productos/mother-9.png", categoria: "motherboard", cantidad: 1 },
-    { id: 10, nombre: "MOTHERBOARD GIGABYTE B660 AORUS MASTER", precio: 58329, img: "../img/productos/mother-10.png", categoria: "motherboard", cantidad: 1 },
-    { id: 11, nombre: "MOTHERBOARD ASROCK Z590 PG VELOCITA", precio: 60869, img: "../img/productos/mother-11.png", categoria: "motherboard", cantidad: 1 },
-    { id: 12, nombre: "MOTHERBOARD GIGABYTE Z690 AORUS ELITE AX", precio: 69359, img: "../img/productos/mother-12.png", categoria: "motherboard", cantidad: 1 },
+    { id: 1, nombre: "MOTHERBOARD ASUS PRIME A520M-K AM4", precio: 15429, img: "../img/productos/mother-1.png", categoria: "motherboards", cantidad: 1 },
+    { id: 2, nombre: "MOTHERBOARD ASUS PRIME A520M-A II AM4", precio: 16049, img: "../img/productos/mother-2.png", categoria: "motherboards", cantidad: 1 },
+    { id: 3, nombre: "MOTHERBOARD GIGABYTE B460M DS3H V2 M-ATX", precio: 20789, img: "../img/productos/mother-3.png", categoria: "motherboards", cantidad: 1 },
+    { id: 4, nombre: "MOTHERBOARD GIGABYTE B450 GAMING X AM4", precio: 20999, img: "../img/productos/mother-4.png", categoria: "motherboards", cantidad: 1 },
+    { id: 5, nombre: "MOTHERBOARD ASROCK Z590 PHANTOM GAMING 4", precio: 33489, img: "../img/productos/mother-5.png", categoria: "motherboards", cantidad: 1 },
+    { id: 6, nombre: "MOTHERBOARD MSI B550M-A PRO AM4", precio: 34649, img: "../img/productos/mother-6.png", categoria: "motherboards", cantidad: 1 },
+    { id: 7, nombre: "MOTHERBOARD ASUS TUF GAMING B550M-PLUS", precio: 37269, img: "../img/productos/mother-7.png", categoria: "motherboards", cantidad: 1 },
+    { id: 8, nombre: "MOTHERBOARD MSI PRO Z690-A WIFI", precio: 45969, img: "../img/productos/mother-8.png", categoria: "motherboards", cantidad: 1 },
+    { id: 9, nombre: "MOTHERBOARD GIGABYTE B660M AORUS PRO", precio: 50819, img: "../img/productos/mother-9.png", categoria: "motherboards", cantidad: 1 },
+    { id: 10, nombre: "MOTHERBOARD GIGABYTE B660 AORUS MASTER", precio: 58329, img: "../img/productos/mother-10.png", categoria: "motherboards", cantidad: 1 },
+    { id: 11, nombre: "MOTHERBOARD ASROCK Z590 PG VELOCITA", precio: 60869, img: "../img/productos/mother-11.png", categoria: "motherboards", cantidad: 1 },
+    { id: 12, nombre: "MOTHERBOARD GIGABYTE Z690 AORUS ELITE AX", precio: 69359, img: "../img/productos/mother-12.png", categoria: "motherboards", cantidad: 1 },
 
     { id: 13, nombre: "MICROPROCESADOR CPU AMD RYZEN 3 4100", precio: 21490, img: "../img/productos/micro-1.png", categoria: "microprocesadores", cantidad: 1 },
     { id: 14, nombre: "MICROPROCESADOR INTEL CORE I3 10100", precio: 25990, img: "../img/productos/micro-2.png", categoria: "microprocesadores", cantidad: 1 },
@@ -111,17 +111,21 @@ const mostrarProductos = (prodCaract) => {
     let filtro = productos.filter(producto => producto.categoria === prodCaract);
 
     filtro.forEach(producto => {
-        filters.innerHTML = `<h3>${producto.categoria.toUpperCase()}</h3>
-                            <select class="form-select mb-3" aria-label="Default select example" id="select">
-                                <option selected>Ordenar por:</option>
-                                <option value="MayorPrecio">Mayor precio</option>
-                                <option value="MenorPrecio">Menor precio</option>
-                                <option value="Marca">Marca</option>
-                            </select>`;
+        filters.classList.add("container-sm");
+        filters.innerHTML = `<h1 class="line"><span>${producto.categoria.toUpperCase()}</span></h1>
+                            <div class="d-flex justify-content-center justify-content-sm-end mt-3">
+                                <div class="col-12 col-sm-3">
+                                    <select class="form-select mb-3" aria-label="Default select example" id="select">
+                                        <option selected>Ordenar por:</option>
+                                        <option value="MayorPrecio">Mayor precio</option>
+                                        <option value="MenorPrecio">Menor precio</option>
+                                        <option value="Marca">Marca</option>
+                                    </select>
+                                </div>
+                            </div>`;
 
         let div = document.createElement("div");
         div.className = "card column-custom"
-        div.id = `${producto.categoria}`
         div.innerHTML = `   <div class="thumb img-back">
                                 <img src="${producto.img}" class="img-contained" alt="...">
                             </div>
@@ -148,7 +152,6 @@ const mostrarProductos = (prodCaract) => {
                 MayorPrecio.forEach(producto => {
                     let div = document.createElement("div");
                     div.className = "card column-custom"
-                    div.id = `${producto.categoria}`
                     div.innerHTML = `<div class="thumb img-back">
                                         <img src="${producto.img}" class="img-contained" alt="...">
                                     </div>
@@ -169,7 +172,6 @@ const mostrarProductos = (prodCaract) => {
                 MenorPrecio.forEach(producto => {
                     let div = document.createElement("div");
                     div.className = "card column-custom"
-                    div.id = `${producto.categoria}`
                     div.innerHTML = `<div class="thumb img-back">
                                         <img src="${producto.img}" class="img-contained" alt="...">
                                     </div>
@@ -350,7 +352,7 @@ let microList = document.querySelectorAll("#microList");
 motherList.forEach(event => {
     event.addEventListener("click", () => {
         productosContainer.innerHTML = "";
-        mostrarProductos("motherboard");
+        mostrarProductos("motherboards");
     });
 });
 
