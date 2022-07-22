@@ -91,6 +91,7 @@ function filtro(filters) {
 let productosContainer = document.getElementById("productosContainer");
 let carritoContainer = document.getElementById("carritoContainer");
 let compraContainer = document.getElementById("compraContainer");
+let filters = document.getElementById("filters");
 let totalCarro = document.getElementById("totalCarrito");
 let totalCompra = document.getElementById("totalCompra");
 let contadores = document.querySelectorAll("#contador");
@@ -108,7 +109,16 @@ const contador = () => {
 //-------Funcion Mostrar Productos---------->
 const mostrarProductos = (prodCaract) => {
     let filtro = productos.filter(producto => producto.categoria === prodCaract);
+
     filtro.forEach(producto => {
+        filters.innerHTML = `<h3>${producto.categoria.toUpperCase()}</h3>
+                            <select class="form-select mb-3" aria-label="Default select example" id="select">
+                                <option selected>Ordenar por:</option>
+                                <option value="MayorPrecio">Mayor precio</option>
+                                <option value="MenorPrecio">Menor precio</option>
+                                <option value="Marca">Marca</option>
+                            </select>`;
+
         let div = document.createElement("div");
         div.className = "card column-custom"
         div.id = `${producto.categoria}`
@@ -121,13 +131,64 @@ const mostrarProductos = (prodCaract) => {
                                 <button class="btn btn-primary" id="boton${producto.id}"><i class="fa-solid fa-cart-plus"></i> Añadir</button>
                             </div>`;
         productosContainer.append(div);
+
+
         let boton = document.getElementById(`boton${producto.id}`);
         boton.addEventListener("click", () => {
             agregarAlCarrito(producto.id);
         });
     });
+    
+    let select = document.getElementById("select");
+        select.addEventListener("change", () => {
+            productosContainer.innerHTML = "";
+            if (select.value.toString() == "MayorPrecio") {
+                let MayorPrecio = [...filtro];
+                MayorPrecio.sort((a, b) => b.precio - a.precio);
+                MayorPrecio.forEach(producto => {
+                    let div = document.createElement("div");
+                    div.className = "card column-custom"
+                    div.id = `${producto.categoria}`
+                    div.innerHTML = `<div class="thumb img-back">
+                                        <img src="${producto.img}" class="img-contained" alt="...">
+                                    </div>
+                                    <div class="w-100 p-1 bg-white">
+                                        <h3 class="card-title">$${producto.precio}</h4>
+                                        <p class="card-text" style="font-size: 14px">${producto.nombre}</p>
+                                        <button class="btn btn-primary" id="boton${producto.id}"><i class="fa-solid fa-cart-plus"></i> Añadir</button>
+                                    </div>`;
+                    productosContainer.append(div);
+                    let boton = document.getElementById(`boton${producto.id}`);
+                    boton.addEventListener("click", () => {
+                        agregarAlCarrito(producto.id);
+                    });
+                });
+            } else if (select.value.toString() == "MenorPrecio") {
+                let MenorPrecio = [...filtro];
+                MenorPrecio.sort((a, b) => a.precio - b.precio);
+                MenorPrecio.forEach(producto => {
+                    let div = document.createElement("div");
+                    div.className = "card column-custom"
+                    div.id = `${producto.categoria}`
+                    div.innerHTML = `<div class="thumb img-back">
+                                        <img src="${producto.img}" class="img-contained" alt="...">
+                                    </div>
+                                    <div class="w-100 p-1 bg-white">
+                                        <h3 class="card-title">$${producto.precio}</h4>
+                                        <p class="card-text" style="font-size: 14px">${producto.nombre}</p>
+                                        <button class="btn btn-primary" id="boton${producto.id}"><i class="fa-solid fa-cart-plus"></i> Añadir</button>
+                                    </div>`;
+                    productosContainer.append(div);
+                    let boton = document.getElementById(`boton${producto.id}`);
+                    boton.addEventListener("click", () => {
+                        agregarAlCarrito(producto.id);
+                    });
+                });
+            }
+        });
 }
 //-------Fin Mostrar Productos---------->
+
 
 
 //-------Funcion Agregar Carrito---------->
@@ -276,8 +337,6 @@ const vaciarCarrito = () => {
 
 
 
-
-
 actualizarCarrito();
 totalCarrito();
 
@@ -303,7 +362,7 @@ microList.forEach(event => {
 });
 
 
-const ordenar = (caract) => {
+/* const ordenar = (caract) => {
     let precios = [];
     let prodcaract = productos.filter(producto => producto.categoria === caract);
     prodcaract.forEach(producto => {
@@ -315,8 +374,7 @@ const ordenar = (caract) => {
     console.log(precios);
 }
 
-ordenar("microprocesadores");
-
+ordenar("microprocesadores"); */
 
 
 
