@@ -7,6 +7,7 @@
 .f-gef{font-family: geforce;}
 .f-ddn{font-family: ddnpro;}
 .f-ars{font-family: aorus;}
+.f-pri{font-family: rajdhani;}
 
 .box-shw{
     box-shadow: 0 2px 1px -1px rgb(0 0 0 / 20%), 0 1px 1px 0 rgb(0 0 0 / 14%), 0 1px 3px 0 rgb(0 0 0 / 12%);
@@ -31,12 +32,24 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 7px;
+    @include media-up(576px){
+        gap: 7px;
+    }
+    @include media-up(768px){
+        gap: 20px;
+    }
     }
 
 .column-custom{
     width: 48%;
     display: flex;
     align-items:center;
+        @include media-up(576px){
+            width: 30%;
+        }
+        @include media-up(768px){
+            width: 30%;
+        }
     }
 
 .thumb{
