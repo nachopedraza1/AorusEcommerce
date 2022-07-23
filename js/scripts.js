@@ -324,20 +324,5 @@ microList.forEach(event => {
 });
 
 mostrarProductos("microprocesadores");
-/* const ordenar = (caract) => {
-    let precios = [];
-    let prodcaract = productos.filter(producto => producto.categoria === caract);
-    prodcaract.forEach(producto => {
-        precios.push(producto.precio)
-        precios.sort((a,b)=>{
-            return b - a;
-        })
-    })
-    console.log(precios);
-}
-
-ordenar("microprocesadores"); */
-
-
 
 
