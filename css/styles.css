@@ -155,7 +155,7 @@ a:hover .fa-angle-right {
   margin: 0 auto;
 }
 .line span {
-  background-color: #f2f2f2;
+  background-color: #ffffff;
   padding: 0 20px;
   position: relative;
 }
@@ -213,18 +213,8 @@ a:hover .fa-angle-right {
 .flex-custom {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between;
   gap: 7px;
-}
-@media screen and (min-width: 576px) {
-  .flex-custom {
-    gap: 7px;
-  }
-}
-@media screen and (min-width: 768px) {
-  .flex-custom {
-    gap: 20px;
-  }
 }
 
 .column-custom {
@@ -234,10 +224,20 @@ a:hover .fa-angle-right {
 }
 @media screen and (min-width: 576px) {
   .column-custom {
-    width: 30%;
+    width: 48%;
   }
 }
 @media screen and (min-width: 768px) {
+  .column-custom {
+    width: 45%;
+  }
+}
+@media screen and (min-width: 992px) {
+  .column-custom {
+    width: 32%;
+  }
+}
+@media screen and (min-width: 1200px) {
   .column-custom {
     width: 30%;
   }

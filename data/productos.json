@@ -1,0 +1,27 @@
+[
+    { "id": 1, "nombre": "MOTHERBOARD ASUS PRIME A520M-K AM4", "precio": 15429, "img": "../img/productos/mother-1.png", "categoria": "motherboards", "cantidad": 1, "marca": "amd" },
+    { "id": 2, "nombre": "MOTHERBOARD ASUS PRIME A520M-A II AM4", "precio": 16049, "img": "../img/productos/mother-2.png", "categoria": "motherboards", "cantidad": 1, "marca": "amd" },
+    { "id": 3, "nombre": "MOTHERBOARD GIGABYTE B460M DS3H V2 M-ATX", "precio": 20789, "img": "../img/productos/mother-3.png", "categoria": "motherboards", "cantidad": 1, "marca": "intel" },
+    { "id": 4, "nombre": "MOTHERBOARD GIGABYTE B450 GAMING X AM4", "precio": 20999, "img": "../img/productos/mother-4.png", "categoria": "motherboards", "cantidad": 1, "marca": "amd" },
+    { "id": 5, "nombre": "MOTHERBOARD ASROCK Z590 PHANTOM GAMING 4", "precio": 33489, "img": "../img/productos/mother-5.png", "categoria": "motherboards", "cantidad": 1, "marca": "intel" },
+    { "id": 6, "nombre": "MOTHERBOARD MSI B550M-A PRO AM4", "precio": 34649, "img": "../img/productos/mother-6.png", "categoria": "motherboards", "cantidad": 1, "marca": "amd" },
+    { "id": 7, "nombre": "MOTHERBOARD ASUS TUF GAMING B550M-PLUS", "precio": 37269, "img": "../img/productos/mother-7.png", "categoria": "motherboards", "cantidad": 1, "marca": "intel" },
+    { "id": 8, "nombre": "MOTHERBOARD MSI PRO Z690-A WIFI", "precio": 45969, "img": "../img/productos/mother-8.png", "categoria": "motherboards", "cantidad": 1, "marca": "intel" },
+    { "id": 9, "nombre": "MOTHERBOARD GIGABYTE B660M AORUS PRO", "precio": 50819, "img": "../img/productos/mother-9.png", "categoria": "motherboards", "cantidad": 1, "marca": "intel" },
+    { "id": 10, "nombre": "MOTHERBOARD GIGABYTE B660 AORUS MASTER", "precio": 58329, "img": "../img/productos/mother-10.png", "categoria": "motherboards", "cantidad": 1, "marca": "intel" },
+    { "id": 11, "nombre": "MOTHERBOARD ASROCK Z590 PG VELOCITA", "precio": 60869, "img": "../img/productos/mother-11.png", "categoria": "motherboards", "cantidad": 1, "marca": "amd" },
+    { "id": 12, "nombre": "MOTHERBOARD GIGABYTE Z690 AORUS ELITE AX", "precio": 69359, "img": "../img/productos/mother-12.png", "categoria": "motherboards", "cantidad": 1, "marca": "intel" },
+
+    { "id": 13, "nombre": "MICROPROCESADOR CPU AMD RYZEN 3 4100", "precio": 21490, "img": "../img/productos/micro-1.png", "categoria": "microprocesadores", "cantidad": 1 },
+    { "id": 14, "nombre": "MICROPROCESADOR INTEL CORE I3 10100", "precio": 25990, "img": "../img/productos/micro-2.png", "categoria": "microprocesadores", "cantidad": 1, "marca": "intel" },
+    { "id": 15, "nombre": "MICROPROCESADOR INTEL CORE I5 10400F", "precio": 28999, "img": "../img/productos/micro-3.png", "categoria": "microprocesadores", "cantidad": 1, "marca": "intel" },
+    { "id": 16, "nombre": "MICROPROCESADOR CPU AMD RYZEN 5 4600G", "precio": 39490, "img": "../img/productos/micro-4.png", "categoria": "microprocesadores", "cantidad": 1, "marca": "amd" },
+    { "id": 17, "nombre": "MICROPROCESADOR INTEL CORE I5 10600K", "precio": 46990, "img": "../img/productos/micro-5.png", "categoria": "microprocesadores", "cantidad": 1, "marca": "intel" },
+    { "id": 18, "nombre": "MICROPROCESADOR CPU AMD RYZEN 5 5600", "precio": 47990, "img": "../img/productos/micro-6.png", "categoria": "microprocesadores", "cantidad": 1, "marca": "amd" },
+    { "id": 19, "nombre": "MICROPROCESADOR AMD RYZEN 5 5600X", "precio": 52990, "img": "../img/productos/micro-7.png", "categoria": "microprocesadores", "cantidad": 1, "marca": "amd" },
+    { "id": 20, "nombre": "PROCESADOR AMD RYZEN 7 5700G", "precio": 63990, "img": "../img/productos/micro-8.png", "categoria": "microprocesadores", "cantidad": 1, "marca": "amd" },
+    { "id": 21, "nombre": "MICROPROCESADOR INTEL I7 10700", "precio": 64990, "img": "../img/productos/micro-9.png", "categoria": "microprocesadores", "cantidad": 1, "marca": "intel" },
+    { "id": 22, "nombre": "MICROPROCESADOR AMD RYZEN 9 5900X", "precio": 99990, "img": "../img/productos/micro-10.png", "categoria": "microprocesadores", "cantidad": 1, "marca": "amd" },
+    { "id": 23, "nombre": "MICROPROCESADOR CPU INTEL CORE I9 12900", "precio": 125999, "img": "../img/productos/micro-11.png", "categoria": "microprocesadores", "cantidad": 1, "marca": "intel" },
+    { "id": 24, "nombre": "MICROPROCESADOR AMD RYZEN 9 5950X", "precio": 138990, "img": "../img/productos/micro-12.png", "categoria": "microprocesadores", "cantidad": 1, "marca": "amd" }
+]

@@ -30,14 +30,8 @@
 .flex-custom{
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-between;
     gap: 7px;
-    @include media-up(576px){
-        gap: 7px;
-    }
-    @include media-up(768px){
-        gap: 20px;
-    }
     }
 
 .column-custom{
@@ -45,10 +39,16 @@
     display: flex;
     align-items:center;
         @include media-up(576px){
-            width: 30%;
+            width: 48%;
         }
         @include media-up(768px){
-            width: 30%;
+            width: 45%;
+        }
+        @include media-up(992px){
+            width: 32%;
+        }
+        @include media-up(1200px){
+        width: 30%;
         }
     }
 
