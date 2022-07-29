@@ -24,13 +24,16 @@ acordionQuit.addEventListener("click", () => {
 //------------------Lista de Productos----------------
 //----------------------------------------------------
 let productos = [];
-const traerDatos = async () =>{
+const traerDatos = async () => {
     const respuesta = await fetch("../data/productos.json")
     const data = await respuesta.json();
 
     data.forEach(producto => {
         productos.push(producto);
     });
+    mostrarProductos("microprocesadores");
+    actualizarCarrito();
+    totalCarrito();
 }
 traerDatos();
 
@@ -78,7 +81,7 @@ let filters = document.getElementById("filters");
 let totalCarro = document.getElementById("totalCarrito");
 let totalCompra = document.getElementById("totalCompra");
 let contadores = document.querySelectorAll("#contador");
-
+let modalContainer = document.getElementById("modalContainer");
 
 //-------Crear Box Producto---------->
 const createProductBox = (arrayAMostrar) => {
@@ -120,7 +123,6 @@ const mostrarProductos = (categoria) => {
         select.addEventListener("click", () => {
             productosContainer.innerHTML = "";
             createProductBox(filtroMarcaAmd);
-            ordenarProd(filtroCategoria);
         });
     });
 
@@ -129,7 +131,6 @@ const mostrarProductos = (categoria) => {
         select.addEventListener("click", () => {
             productosContainer.innerHTML = "";
             createProductBox(filtroMarcaIntel);
-            ordenarProd(filtroMarcaIntel);
         });
     });
 
@@ -248,7 +249,7 @@ const totalCarrito = () => {
     totalCarro.classList.add("mt-3");
     totalCarro.innerHTML = `<h3 class="f-ddn">Total : <b class="text-danger">$${totalSuma}</b></h3>
                             <button id="vaciarCarrito" class="btn btn-danger f-gef fs-6 text-white">Vaciar Carrito</button>
-                            <button id="finalizarCompra" class="btn btn-danger f-gef fs-6 text-white" data-bs-toggle="modal" data-bs-target="#exampleModal">Finalizar Compra</button>`;
+                            <button id="finalizarCompra" class="btn btn-danger f-gef fs-6 text-white" data-bs-toggle="modal" data-bs-target="#modalComprar">Finalizar Compra</button>`;
 
     totalCompra.innerText = `$${totalSuma}`;
     let btnVaciar = document.getElementById("vaciarCarrito");
@@ -304,13 +305,10 @@ const vaciarCarrito = () => {
 }
 //------------------------------->
 
-mostrarProductos("microprocesadores");
-actualizarCarrito();
-totalCarrito();
 
-//----------------------------------------------------
+//-------------------------------------------------
 //-----------------Menu Productos------------------
-//----------------------------------------------------
+//-------------------------------------------------
 let motherList = document.querySelectorAll("#motherList");
 let microList = document.querySelectorAll("#microList");
 
@@ -328,4 +326,116 @@ microList.forEach(event => {
     });
 });
 
+//-------------------------------------------------
+//-----------------Datos Tarjeta-------------------
+//-------------------------------------------------
+let formulario = document.getElementById("formulario-tarjeta");
+let numeroTarjeta = document.querySelector("#numero .numero");
+let nombreTarjeta = document.querySelector("#nombre .nombre");
+let mesExpiracion = document.querySelector("#expiracion .expiracion .mes");
+let yearExpiracion = document.querySelector("#expiracion .expiracion .year");
+let logoMarca = document.querySelector('#logo-marca');
+let cvv = document.querySelector("#ccv .ccv");
+
+
+let tarjeta = document.getElementById("tarjeta");
+tarjeta.addEventListener("click", () => {
+    tarjeta.classList.toggle("active");
+});
+
+const mostrarFrente = () => {
+    if (tarjeta.classList.contains("active")) {
+        tarjeta.classList.remove("active");
+    }
+}
+
+
+//-------------Input numero de tarjeta------------------>
+formulario.inputNumero.addEventListener("keyup", (e) => {
+    let valorInput = e.target.value;
+    formulario.inputNumero.value = valorInput
+        // Eliminamos espacios en blanco
+        .replace(/\s/g, '')
+        // Eliminar las letras
+        .replace(/\D/g, '')
+        // Ponemos espacio cada cuatro numeros
+        .replace(/([0-9]{4})/g, '$1 ')
+        // Elimina el ultimo espaciado
+        .trim();
+    numeroTarjeta.textContent = valorInput
+
+    if (numeroTarjeta.textContent == "") {
+        numeroTarjeta.textContent = "#### #### #### ####";
+    }
+    if (valorInput[0] <= 4) {
+        logoMarca.innerHTML = '';
+        const imagen = document.createElement('img');
+        imagen.src = '../img/tarjeta/visa.png';
+        logoMarca.appendChild(imagen);
+    } else if (valorInput[0] >= 5) {
+        logoMarca.innerHTML = '';
+        const imagen = document.createElement('img');
+        imagen.src = '../img/tarjeta/mastercard.png';
+        logoMarca.appendChild(imagen);
+    }
+    mostrarFrente();
+});
+
+//-------------Input nombre de tarjeta------------------>
+formulario.inputNombre.addEventListener("keyup", (e) => {
+    let valorInput = e.target.value;
+    formulario.inputNombre.value = valorInput
+        // Eliminar Numeros
+        .replace(/[0-9]/g, '')
+    nombreTarjeta.textContent = valorInput;
+    if (nombreTarjeta.textContent == "") {
+        nombreTarjeta.textContent = "----------------------"
+    }
+    mostrarFrente();
+})
+
+//-------------Input ccv de tarjeta---------------------->
+formulario.inputCCV.addEventListener("keyup", (e) => {
+    let valorInput = e.target.value;
+    formulario.inputCCV.value = valorInput
+        // Eliminamos espacios en blanco
+        .replace(/\s/g, '')
+        // Eliminar las letras
+        .replace(/\D/g, '')
+        // Elimina el ultimo espaciado
+        .trim();
+    cvv.textContent = valorInput;
+    if (!tarjeta.classList.contains("active")) {
+        tarjeta.classList.toggle("active");
+    }
+});
+
+
+//-------------Input Mes de tarjeta---------------------->
+for (let i = 1; i <= 12; i++) {
+    let opcion = document.createElement("option");
+    opcion.value = i;
+    opcion.innerText = i;
+    formulario.selectMes.append(opcion);
+}
+
+formulario.selectMes.addEventListener("change", (e) => {
+    mesExpiracion.textContent = e.target.value;
+    console.log(e.target);
+    mostrarFrente();
+});
+
+//-------------Input Año de tarjeta---------------------->
+const yearActual = new Date().getFullYear();
+for (let i = yearActual; i <= yearActual + 8; i++) {
+    let opcion = document.createElement("option");
+    opcion.value = i;
+    opcion.textContent = i;
+    formulario.selectYear.append(opcion);
+}
+
+formulario.selectYear.addEventListener("change", (e) => {
+    yearExpiracion.textContent = e.target.value.slice(2);
+    mostrarFrente();
+});
 
