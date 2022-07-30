@@ -22,7 +22,10 @@
     <title>Document</title>
 </head>
 
-<body>
+<body class="overflow-hidden" id="body">
+    <div class="loading-div show active" id="loading-div">
+        <div><span></span> <span></span> <span></span></div>
+    </div>
     <header class="header" data-aos="fade-down">
         <div class="header__top d-none d-md-flex justify-content-between align-items-center">
             <div>
@@ -144,7 +147,11 @@
                 <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
                     aria-label="Close"></button>
             </div>
+
             <div class="offcanvas-body">
+                <div id="carritoVacio">
+                    <h5 class="text-center f-gef">El carrito esta vacio.</h5>
+                </div>
                 <table id="carritoContainer">
 
                 </table>
@@ -156,13 +163,13 @@
     <section class="container-xxl mt-3 f-ddn d-none">
         <div class="" id="filters">
         </div>
-            <div class="col-12">
-                <select class="form-select mb-3" id="select">
-                    <option selected>Ordenar por:</option>
-                    <option value="MayorPrecio">Mayor precio</option>
-                    <option value="MenorPrecio">Menor precio</option>
-                </select>
-            </div>
+        <div class="col-12">
+            <select class="form-select mb-3" id="select">
+                <option selected>Ordenar por:</option>
+                <option value="MayorPrecio">Mayor precio</option>
+                <option value="MenorPrecio">Menor precio</option>
+            </select>
+        </div>
         </div>
         <div class="flex-custom" id="productosContainer">
             <!-- JS PRODUCTOS -->
@@ -177,7 +184,7 @@
                         <h5 class="modal-title f-gef" id="exampleModalLabel">Descripcion de tu pedido:</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body" id="modalContainer">
+                    <div class="modal-body">
                         <table id="compraContainer">
 
                         </table>
@@ -199,17 +206,17 @@
             </div>
         </div>
 
-        <div class="modal fade" id="modalPagar" tabindex="-1" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
+        <div class="modal fade" id="modalPagar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-xl">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title f-gef" id="exampleModalLabel">Descripcion de tu pedido:</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body" id="modalContainer">
+                    <div class="modal-body row justify-content-center justify-content-xl-around align-items-center"
+                        id="modalContainer">
                         <!-- Tarjeta -->
-                        <section class="tarjeta" id="tarjeta">
+                        <section class="tarjeta col-12 col-sm-10 col-md-9 col-lg-6 col-xl-4" id="tarjeta">
                             <div class="delantera">
                                 <div class="logo-marca" id="logo-marca">
                                 </div>
@@ -255,7 +262,8 @@
                         </section>
 
                         <!-- Formulario -->
-                        <form action="" id="formulario-tarjeta" class="formulario-tarjeta">
+                        <form action="" class="formulario-tarjeta col-12 col-sm-10 col-md-9 col-lg-6 col-xl-4"
+                            id="formulario-tarjeta">
                             <div class="grupo">
                                 <label for="inputNumero">Número Tarjeta</label>
                                 <input type="text" id="inputNumero" maxlength="19" autocomplete="off">
@@ -288,7 +296,7 @@
                                     <input type="text" id="inputCCV" maxlength="3">
                                 </div>
                             </div>
-                            <button type="submit" class="btn-pagar">Pagar</button>
+                            <button type="submit" class="btn-pagar f-pri" id="btn-pagar">PAGAR</button>
                         </form>
                     </div>
                 </div>
@@ -476,7 +484,7 @@
             </div>
         </div>
     </section>
-    
+
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="libs/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="js/jquery.min.js"></script>
