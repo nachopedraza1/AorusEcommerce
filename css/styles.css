@@ -1,5 +1,762 @@
 @charset "UTF-8";
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css");
+.loading-div {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  background: rgb(0, 0, 0);
+  z-index: 99999;
+  color: #fff;
+  line-height: 100vh;
+  text-align: center;
+  opacity: 0;
+  transition: 0.5s all;
+}
+
+.loading-div.show {
+  opacity: 1;
+  transition: 0.5s all;
+}
+
+.loading-div > div {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  width: 100px;
+  height: 60px;
+  line-height: 60px;
+  /* background: #fff; */
+  text-align: center;
+}
+
+@keyframes loading {
+  0% {
+    transform: scale(1) skewX(-40deg);
+  }
+  15% {
+    transform: scale(1.3) skewX(-40deg);
+    background: #ff6400;
+  }
+  30% {
+    transform: scale(1) skewX(-40deg);
+  }
+  100% {
+    transform: scale(1) skewX(-40deg);
+  }
+}
+.loading-div > div > span {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  transform-origin: center;
+  transform: scale(1) skewX(-40deg);
+  margin: 0 4px;
+  animation-name: loading;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+}
+
+.loading-div > div > span:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.loading-div > div > span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.loading-div > div > span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+/* ---------- Estilos Generales de las Tarjetas ----------*/
+.tarjeta.active {
+  transform: rotateY(180deg);
+}
+
+.tarjeta {
+  width: 100%;
+  max-width: 550px;
+  position: relative;
+  color: #fff;
+  transition: 0.3s ease all;
+  transform: rotateY(0deg);
+  transform-style: preserve-3d;
+  cursor: pointer;
+  z-index: 2;
+}
+.tarjeta > div {
+  padding: 15px;
+  border-radius: 15px;
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 10px 10px 0 rgba(90, 116, 148, 0.3);
+}
+.tarjeta .delantera {
+  width: 100%;
+  background: url(../img/tarjeta/bg-tarjeta-01.jpg);
+  background-size: cover;
+}
+.tarjeta .delantera .logo-marca {
+  text-align: right;
+  min-height: 40px;
+}
+.tarjeta .delantera .logo-marca img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  max-width: 80px;
+}
+.tarjeta .delantera .chip {
+  width: 100%;
+  max-width: 50px;
+  margin-bottom: 5px;
+}
+.tarjeta .delantera .grupo .label {
+  font-size: 15px;
+  color: #7d8994;
+  margin-bottom: 5px;
+}
+.tarjeta .delantera .grupo .numero,
+.tarjeta .delantera .grupo .nombre,
+.tarjeta .delantera .grupo .expiracion {
+  color: #fff;
+  font-size: 15px;
+  text-transform: uppercase;
+}
+.tarjeta .delantera .flexbox {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+}
+
+/* ---------- Tarjeta Trasera ----------*/
+.trasera {
+  background: url(../img/tarjeta/bg-tarjeta-01.jpg);
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  right: 10px;
+  left: 10px;
+  transform: rotateY(180deg);
+  backface-visibility: hidden;
+}
+.trasera .barra-magnetica {
+  height: 35px;
+  background: #000;
+  width: 100%;
+  position: absolute;
+  top: 15px;
+  left: 0;
+}
+.trasera .datos {
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-between;
+}
+.trasera .datos p {
+  margin-bottom: 5px;
+}
+.trasera .datos #firma {
+  width: 70%;
+}
+.trasera .datos #firma .firma {
+  height: 20px;
+  background: repeating-linear-gradient(skyblue 0, skyblue 5px, orange 5px, orange 10px);
+}
+.trasera .datos #firma .firma p {
+  line-height: 40px;
+  font-family: "Liu Jian Mao Cao", cursive;
+  color: #000;
+  font-size: 15px;
+  padding: 0 10px;
+  text-transform: capitalize;
+}
+.trasera .datos #ccv {
+  width: 20%;
+}
+.trasera .datos #ccv .ccv {
+  background: #fff;
+  height: 30px;
+  color: #000;
+  padding: 10px;
+  text-align: center;
+}
+.trasera .leyenda {
+  font-size: 15px;
+  line-height: 24px;
+}
+.trasera .link-banco {
+  font-size: 15px;
+  color: #fff;
+}
+
+/* ---------- Formulario Tarjeta ----------*/
+.formulario-tarjeta {
+  background: #fff;
+  width: 100%;
+  max-width: 700px;
+  padding: 20px;
+  border-radius: 10px;
+  z-index: 1;
+}
+.formulario-tarjeta label {
+  display: block;
+  color: #7d8994;
+  margin-bottom: 5px;
+  font-size: 16px;
+}
+.formulario-tarjeta input,
+.formulario-tarjeta select,
+.formulario-tarjeta .btn-pagar {
+  border: 2px solid #CED6E0;
+  font-size: 18px;
+  height: 50px;
+  width: 100%;
+  padding: 5px 12px;
+  transition: 0.3s ease all;
+  border-radius: 5px;
+}
+.formulario-tarjeta input:hover,
+.formulario-tarjeta select:hover {
+  border: 2px solid #FF6400;
+}
+.formulario-tarjeta input:focus,
+.formulario-tarjeta select:focus {
+  outline: rgb(4, 4, 4);
+  box-shadow: 1px 7px 10px -5px rgba(90, 116, 148, 0.3);
+}
+.formulario-tarjeta input {
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+.formulario-tarjeta .flexbox {
+  display: flex;
+  justify-content: space-between;
+}
+.formulario-tarjeta .expira {
+  width: 70%;
+}
+.formulario-tarjeta .ccv {
+  width: 30%;
+}
+.formulario-tarjeta .grupo-select {
+  width: 100%;
+  margin-right: 15px;
+  position: relative;
+}
+.formulario-tarjeta select {
+  -webkit-appearance: none;
+}
+.formulario-tarjeta .grupo-select i {
+  position: absolute;
+  color: #CED6E0;
+  top: 18px;
+  right: 15px;
+  transition: 0.3s ease all;
+}
+.formulario-tarjeta .btn-pagar {
+  border: none;
+  padding: 10px;
+  font-size: 22px;
+  color: #fff;
+  background: #FF6400;
+  cursor: pointer;
+}
+.formulario-tarjeta .btn-pagar:hover {
+  background: #b44c08;
+}
+
+footer {
+  width: 100%;
+  margin-top: 20px;
+  padding: 20px;
+  background: #1f1f1f;
+}
+footer a {
+  color: white;
+}
+footer i {
+  transition: all 0.3s;
+}
+footer i:hover {
+  color: #FF6400;
+}
+
+/* Glitch styles*/
+.glitch {
+  position: relative;
+  display: inline-block;
+  animation: glitch-skew 1s linear infinite alternate-reverse;
+}
+
+.glitch:before {
+  left: 0;
+  left: 2px;
+  text-shadow: -2px 0 #ff32af;
+  clip: rect(44px, 450px, 56px, 0);
+  animation: glitch-anim 5s linear infinite alternate-reverse;
+}
+
+.glitch:after,
+.glitch:before {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.glitch:after {
+  left: 0;
+  left: -2px;
+  text-shadow: -2px 0 #0ff, 2px 2px #ff32af;
+  animation: glitch-anim2 1s linear infinite alternate-reverse;
+}
+
+@-webkit-keyframes glitch-anim {
+  0% {
+    clip: rect(72px, 9999px, 33px, 0);
+    transform: skew(0.52deg);
+  }
+  5% {
+    clip: rect(97px, 9999px, 43px, 0);
+    transform: skew(0.31deg);
+  }
+  10% {
+    clip: rect(29px, 9999px, 43px, 0);
+    transform: skew(0.32deg);
+  }
+  15% {
+    clip: rect(7px, 9999px, 50px, 0);
+    transform: skew(0.12deg);
+  }
+  20% {
+    clip: rect(39px, 9999px, 88px, 0);
+    transform: skew(0.22deg);
+  }
+  25% {
+    clip: rect(6px, 9999px, 13px, 0);
+    transform: skew(0.63deg);
+  }
+  30% {
+    clip: rect(14px, 9999px, 59px, 0);
+    transform: skew(0.27deg);
+  }
+  35% {
+    clip: rect(72px, 9999px, 65px, 0);
+    transform: skew(0.77deg);
+  }
+  40% {
+    clip: rect(94px, 9999px, 18px, 0);
+    transform: skew(0.06deg);
+  }
+  45% {
+    clip: rect(33px, 9999px, 46px, 0);
+    transform: skew(0.23deg);
+  }
+  50% {
+    clip: rect(27px, 9999px, 69px, 0);
+    transform: skew(0.79deg);
+  }
+  55% {
+    clip: rect(45px, 9999px, 61px, 0);
+    transform: skew(0.46deg);
+  }
+  60% {
+    clip: rect(55px, 9999px, 39px, 0);
+    transform: skew(0.72deg);
+  }
+  65% {
+    clip: rect(38px, 9999px, 92px, 0);
+    transform: skew(0.28deg);
+  }
+  70% {
+    clip: rect(93px, 9999px, 66px, 0);
+    transform: skew(0.25deg);
+  }
+  75% {
+    clip: rect(10px, 9999px, 24px, 0);
+    transform: skew(0.57deg);
+  }
+  80% {
+    clip: rect(11px, 9999px, 89px, 0);
+    transform: skew(0.37deg);
+  }
+  85% {
+    clip: rect(36px, 9999px, 93px, 0);
+    transform: skew(0.2deg);
+  }
+  90% {
+    clip: rect(85px, 9999px, 23px, 0);
+    transform: skew(0.52deg);
+  }
+  95% {
+    clip: rect(31px, 9999px, 61px, 0);
+    transform: skew(0.07deg);
+  }
+  to {
+    clip: rect(74px, 9999px, 34px, 0);
+    transform: skew(0.32deg);
+  }
+}
+@keyframes glitch-anim {
+  0% {
+    clip: rect(72px, 9999px, 33px, 0);
+    transform: skew(0.52deg);
+  }
+  5% {
+    clip: rect(97px, 9999px, 43px, 0);
+    transform: skew(0.31deg);
+  }
+  10% {
+    clip: rect(29px, 9999px, 43px, 0);
+    transform: skew(0.32deg);
+  }
+  15% {
+    clip: rect(7px, 9999px, 50px, 0);
+    transform: skew(0.12deg);
+  }
+  20% {
+    clip: rect(39px, 9999px, 88px, 0);
+    transform: skew(0.22deg);
+  }
+  25% {
+    clip: rect(6px, 9999px, 13px, 0);
+    transform: skew(0.63deg);
+  }
+  30% {
+    clip: rect(14px, 9999px, 59px, 0);
+    transform: skew(0.27deg);
+  }
+  35% {
+    clip: rect(72px, 9999px, 65px, 0);
+    transform: skew(0.77deg);
+  }
+  40% {
+    clip: rect(94px, 9999px, 18px, 0);
+    transform: skew(0.06deg);
+  }
+  45% {
+    clip: rect(33px, 9999px, 46px, 0);
+    transform: skew(0.23deg);
+  }
+  50% {
+    clip: rect(27px, 9999px, 69px, 0);
+    transform: skew(0.79deg);
+  }
+  55% {
+    clip: rect(45px, 9999px, 61px, 0);
+    transform: skew(0.46deg);
+  }
+  60% {
+    clip: rect(55px, 9999px, 39px, 0);
+    transform: skew(0.72deg);
+  }
+  65% {
+    clip: rect(38px, 9999px, 92px, 0);
+    transform: skew(0.28deg);
+  }
+  70% {
+    clip: rect(93px, 9999px, 66px, 0);
+    transform: skew(0.25deg);
+  }
+  75% {
+    clip: rect(10px, 9999px, 24px, 0);
+    transform: skew(0.57deg);
+  }
+  80% {
+    clip: rect(11px, 9999px, 89px, 0);
+    transform: skew(0.37deg);
+  }
+  85% {
+    clip: rect(36px, 9999px, 93px, 0);
+    transform: skew(0.2deg);
+  }
+  90% {
+    clip: rect(85px, 9999px, 23px, 0);
+    transform: skew(0.52deg);
+  }
+  95% {
+    clip: rect(31px, 9999px, 61px, 0);
+    transform: skew(0.07deg);
+  }
+  to {
+    clip: rect(74px, 9999px, 34px, 0);
+    transform: skew(0.32deg);
+  }
+}
+@-webkit-keyframes glitch-anim2 {
+  0% {
+    clip: rect(80px, 9999px, 100px, 0);
+    transform: skew(0.52deg);
+  }
+  5% {
+    clip: rect(71px, 9999px, 18px, 0);
+    transform: skew(0.23deg);
+  }
+  10% {
+    clip: rect(20px, 9999px, 96px, 0);
+    transform: skew(0.79deg);
+  }
+  15% {
+    clip: rect(49px, 9999px, 100px, 0);
+    transform: skew(0.06deg);
+  }
+  20% {
+    clip: rect(5px, 9999px, 20px, 0);
+    transform: skew(0.49deg);
+  }
+  25% {
+    clip: rect(35px, 9999px, 52px, 0);
+    transform: skew(0.54deg);
+  }
+  30% {
+    clip: rect(54px, 9999px, 49px, 0);
+    transform: skew(0.8deg);
+  }
+  35% {
+    clip: rect(66px, 9999px, 8px, 0);
+    transform: skew(0.34deg);
+  }
+  40% {
+    clip: rect(33px, 9999px, 14px, 0);
+    transform: skew(0.13deg);
+  }
+  45% {
+    clip: rect(86px, 9999px, 83px, 0);
+    transform: skew(0.93deg);
+  }
+  50% {
+    clip: rect(17px, 9999px, 76px, 0);
+    transform: skew(0.39deg);
+  }
+  55% {
+    clip: rect(55px, 9999px, 9px, 0);
+    transform: skew(0.25deg);
+  }
+  60% {
+    clip: rect(59px, 9999px, 1px, 0);
+    transform: skew(0.45deg);
+  }
+  65% {
+    clip: rect(26px, 9999px, 23px, 0);
+    transform: skew(0.16deg);
+  }
+  70% {
+    clip: rect(76px, 9999px, 4px, 0);
+    transform: skew(0.97deg);
+  }
+  75% {
+    clip: rect(73px, 9999px, 92px, 0);
+    transform: skew(0.17deg);
+  }
+  80% {
+    clip: rect(27px, 9999px, 85px, 0);
+    transform: skew(0.45deg);
+  }
+  85% {
+    clip: rect(87px, 9999px, 25px, 0);
+    transform: skew(0.33deg);
+  }
+  90% {
+    clip: rect(94px, 9999px, 18px, 0);
+    transform: skew(1deg);
+  }
+  95% {
+    clip: rect(78px, 9999px, 80px, 0);
+    transform: skew(0.13deg);
+  }
+  to {
+    clip: rect(2px, 9999px, 81px, 0);
+    transform: skew(0.57deg);
+  }
+}
+@keyframes glitch-anim2 {
+  0% {
+    clip: rect(80px, 9999px, 100px, 0);
+    transform: skew(0.52deg);
+  }
+  5% {
+    clip: rect(71px, 9999px, 18px, 0);
+    transform: skew(0.23deg);
+  }
+  10% {
+    clip: rect(20px, 9999px, 96px, 0);
+    transform: skew(0.79deg);
+  }
+  15% {
+    clip: rect(49px, 9999px, 100px, 0);
+    transform: skew(0.06deg);
+  }
+  20% {
+    clip: rect(5px, 9999px, 20px, 0);
+    transform: skew(0.49deg);
+  }
+  25% {
+    clip: rect(35px, 9999px, 52px, 0);
+    transform: skew(0.54deg);
+  }
+  30% {
+    clip: rect(54px, 9999px, 49px, 0);
+    transform: skew(0.8deg);
+  }
+  35% {
+    clip: rect(66px, 9999px, 8px, 0);
+    transform: skew(0.34deg);
+  }
+  40% {
+    clip: rect(33px, 9999px, 14px, 0);
+    transform: skew(0.13deg);
+  }
+  45% {
+    clip: rect(86px, 9999px, 83px, 0);
+    transform: skew(0.93deg);
+  }
+  50% {
+    clip: rect(17px, 9999px, 76px, 0);
+    transform: skew(0.39deg);
+  }
+  55% {
+    clip: rect(55px, 9999px, 9px, 0);
+    transform: skew(0.25deg);
+  }
+  60% {
+    clip: rect(59px, 9999px, 1px, 0);
+    transform: skew(0.45deg);
+  }
+  65% {
+    clip: rect(26px, 9999px, 23px, 0);
+    transform: skew(0.16deg);
+  }
+  70% {
+    clip: rect(76px, 9999px, 4px, 0);
+    transform: skew(0.97deg);
+  }
+  75% {
+    clip: rect(73px, 9999px, 92px, 0);
+    transform: skew(0.17deg);
+  }
+  80% {
+    clip: rect(27px, 9999px, 85px, 0);
+    transform: skew(0.45deg);
+  }
+  85% {
+    clip: rect(87px, 9999px, 25px, 0);
+    transform: skew(0.33deg);
+  }
+  90% {
+    clip: rect(94px, 9999px, 18px, 0);
+    transform: skew(1deg);
+  }
+  95% {
+    clip: rect(78px, 9999px, 80px, 0);
+    transform: skew(0.13deg);
+  }
+  to {
+    clip: rect(2px, 9999px, 81px, 0);
+    transform: skew(0.57deg);
+  }
+}
+@-webkit-keyframes glitch-skew {
+  0% {
+    transform: skew(3deg);
+  }
+  10% {
+    transform: skew(2deg);
+  }
+  20% {
+    transform: skew(-3deg);
+  }
+  30% {
+    transform: skew(-1deg);
+  }
+  40% {
+    transform: skew(3deg);
+  }
+  50% {
+    transform: skew(3deg);
+  }
+  60% {
+    transform: skew(-3deg);
+  }
+  70% {
+    transform: skew(-3deg);
+  }
+  80% {
+    transform: skew(-4deg);
+  }
+  90% {
+    transform: skew(-2deg);
+  }
+  to {
+    transform: skew(3deg);
+  }
+}
+@keyframes glitch-skew {
+  0% {
+    transform: skew(3deg);
+  }
+  10% {
+    transform: skew(2deg);
+  }
+  20% {
+    transform: skew(-3deg);
+  }
+  30% {
+    transform: skew(-1deg);
+  }
+  40% {
+    transform: skew(3deg);
+  }
+  50% {
+    transform: skew(3deg);
+  }
+  60% {
+    transform: skew(-3deg);
+  }
+  70% {
+    transform: skew(-3deg);
+  }
+  80% {
+    transform: skew(-4deg);
+  }
+  90% {
+    transform: skew(-2deg);
+  }
+  to {
+    transform: skew(3deg);
+  }
+}
+.footer-glitch[data-v-1c95e756] {
+  position: relative;
+  -webkit-animation-name: glitch-anim-text-data-v-1c95e756;
+  animation-name: glitch-anim-text-data-v-1c95e756;
+  -webkit-animation-duration: 4s;
+  animation-duration: 4s;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-delay: 2.8s;
+  animation-delay: 2.8s;
+}
+
+.footer-text-glitch {
+  font-family: Aldrich, sans-serif;
+  font-style: normal;
+  font-size: 18px;
+  line-height: 18px;
+  text-transform: uppercase;
+  color: #fff;
+}
+
 .header {
   z-index: 999;
   background-color: #343636;
@@ -260,285 +1017,22 @@ a:hover .fa-angle-right {
   max-height: 100%;
 }
 
-/* ---------- Estilos Generales de las Tarjetas ----------*/
-.tarjeta.active {
-  transform: rotateY(180deg);
+.swal2-title {
+  font-family: ddnpro;
 }
 
-.tarjeta {
-  width: 100%;
-  max-width: 550px;
+.modal-header {
   position: relative;
-  color: #fff;
-  transition: 0.3s ease all;
-  transform: rotateY(0deg);
-  transform-style: preserve-3d;
-  cursor: pointer;
-  z-index: 2;
 }
-.tarjeta > div {
-  padding: 15px;
-  border-radius: 15px;
-  min-height: 220px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  box-shadow: 0 10px 10px 0 rgba(90, 116, 148, 0.3);
-}
-.tarjeta .delantera {
-  width: 100%;
-  background: url(../img/tarjeta/bg-tarjeta-01.jpg);
-  background-size: cover;
-}
-.tarjeta .delantera .logo-marca {
-  text-align: right;
-  min-height: 40px;
-}
-.tarjeta .delantera .logo-marca img {
-  width: 100%;
+
+.modal-header::before {
+  content: "";
+  width: 10px;
   height: 100%;
-  object-fit: cover;
-  max-width: 80px;
-}
-.tarjeta .delantera .chip {
-  width: 100%;
-  max-width: 50px;
-  margin-bottom: 5px;
-}
-.tarjeta .delantera .grupo .label {
-  font-size: 15px;
-  color: #7d8994;
-  margin-bottom: 5px;
-}
-.tarjeta .delantera .grupo .numero,
-.tarjeta .delantera .grupo .nombre,
-.tarjeta .delantera .grupo .expiracion {
-  color: #fff;
-  font-size: 15px;
-  text-transform: uppercase;
-}
-.tarjeta .delantera .flexbox {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 5px;
-}
-
-/* ---------- Tarjeta Trasera ----------*/
-.trasera {
-  background: url(../img/tarjeta/bg-tarjeta-01.jpg);
-  background-size: cover;
-  position: absolute;
-  top: 0;
-  transform: rotateY(180deg);
-  backface-visibility: hidden;
-}
-.trasera .barra-magnetica {
-  height: 35px;
-  background: #000;
-  width: 100%;
-  position: absolute;
-  top: 15px;
   left: 0;
-}
-.trasera .datos {
-  margin-top: 40px;
-  display: flex;
-  justify-content: space-between;
-}
-.trasera .datos p {
-  margin-bottom: 5px;
-}
-.trasera .datos #firma {
-  width: 70%;
-}
-.trasera .datos #firma .firma {
-  height: 20px;
-  background: repeating-linear-gradient(skyblue 0, skyblue 5px, orange 5px, orange 10px);
-}
-.trasera .datos #firma .firma p {
-  line-height: 40px;
-  font-family: "Liu Jian Mao Cao", cursive;
-  color: #000;
-  font-size: 15px;
-  padding: 0 10px;
-  text-transform: capitalize;
-}
-.trasera .datos #ccv {
-  width: 20%;
-}
-.trasera .datos #ccv .ccv {
-  background: #fff;
-  height: 30px;
-  color: #000;
-  padding: 10px;
-  text-align: center;
-}
-.trasera .leyenda {
-  font-size: 15px;
-  line-height: 24px;
-}
-.trasera .link-banco {
-  font-size: 15px;
-  color: #fff;
-}
-
-/* ---------- Formulario Tarjeta ----------*/
-.formulario-tarjeta {
-  background: #fff;
-  width: 100%;
-  max-width: 700px;
-  padding: 20px;
-  border-radius: 10px;
-  z-index: 1;
-}
-.formulario-tarjeta label {
-  display: block;
-  color: #7d8994;
-  margin-bottom: 5px;
-  font-size: 16px;
-}
-.formulario-tarjeta input,
-.formulario-tarjeta select,
-.formulario-tarjeta .btn-pagar {
-  border: 2px solid #CED6E0;
-  font-size: 18px;
-  height: 50px;
-  width: 100%;
-  padding: 5px 12px;
-  transition: 0.3s ease all;
-  border-radius: 5px;
-}
-.formulario-tarjeta input:hover,
-.formulario-tarjeta select:hover {
-  border: 2px solid #FF6400;
-}
-.formulario-tarjeta input:focus,
-.formulario-tarjeta select:focus {
-  outline: rgb(4, 4, 4);
-  box-shadow: 1px 7px 10px -5px rgba(90, 116, 148, 0.3);
-}
-.formulario-tarjeta input {
-  margin-bottom: 20px;
-  text-transform: uppercase;
-}
-.formulario-tarjeta .flexbox {
-  display: flex;
-  justify-content: space-between;
-}
-.formulario-tarjeta .expira {
-  width: 70%;
-}
-.formulario-tarjeta .ccv {
-  width: 30%;
-}
-.formulario-tarjeta .grupo-select {
-  width: 100%;
-  margin-right: 15px;
-  position: relative;
-}
-.formulario-tarjeta select {
-  -webkit-appearance: none;
-}
-.formulario-tarjeta .grupo-select i {
   position: absolute;
-  color: #CED6E0;
-  top: 18px;
-  right: 15px;
-  transition: 0.3s ease all;
-}
-.formulario-tarjeta .btn-pagar {
-  border: none;
-  padding: 10px;
-  font-size: 22px;
-  color: #fff;
-  background: #FF6400;
-  cursor: pointer;
-}
-.formulario-tarjeta .btn-pagar:hover {
-  background: #b44c08;
-}
-
-.loading-div {
-  position: fixed;
-  width: 100%;
-  height: 100vh;
-  left: 0;
-  top: 0;
-  background: rgb(0, 0, 0);
-  z-index: 99999;
-  color: #fff;
-  line-height: 100vh;
-  text-align: center;
-  opacity: 0;
-  transition: 0.5s all;
-}
-
-.loading-div.show {
-  opacity: 1;
-  transition: 0.5s all;
-}
-
-.loading-div > div {
-  position: relative;
-  display: inline-block;
-  vertical-align: middle;
-  width: 100px;
-  height: 60px;
-  line-height: 60px;
-  /* background: #fff; */
-  text-align: center;
-}
-
-@keyframes loading {
-  0% {
-    transform: scale(1) skewX(-40deg);
-  }
-  15% {
-    transform: scale(1.3) skewX(-40deg);
-    background: #ff6400;
-  }
-  30% {
-    transform: scale(1) skewX(-40deg);
-  }
-  100% {
-    transform: scale(1) skewX(-40deg);
-  }
-}
-.loading-div > div > span {
-  position: relative;
-  display: inline-block;
-  vertical-align: middle;
-  width: 20px;
-  height: 20px;
-  background: #fff;
-  transform-origin: center;
-  transform: scale(1) skewX(-40deg);
-  margin: 0 4px;
-  animation-name: loading;
-  animation-duration: 1.5s;
-  animation-iteration-count: infinite;
-}
-
-.loading-div > div > span:nth-child(1) {
-  animation-delay: 0s;
-}
-
-.loading-div > div > span:nth-child(2) {
-  animation-delay: 0.2s;
-}
-
-.loading-div > div > span:nth-child(3) {
-  animation-delay: 0.4s;
-}
-
-.swal2-popup {
-  font-size: 1rem;
-  font-family: ddnpro;
-}
-
-.swal {
-  font-size: 1rem;
-  font-family: ddnpro;
+  background-color: #FF6400;
+  border-radius: 2px;
 }
 
 /*!

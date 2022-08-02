@@ -135,10 +135,10 @@
                                 <a class="nav-link text-dark" href="#productosContainer" id="microList"><i
                                         class="fa-solid fa-angle-right"></i>
                                     Microprocesadores</a>
-                                <a class="nav-link text-dark" href="#productosContainer"><i
+                                <a class="nav-link text-dark" href="#productosContainer" id="ramList"><i
                                         class="fa-solid fa-angle-right"></i>
                                     Memorias Ram</a>
-                                <a class="nav-link text-dark" href="#productosContainer"><i
+                                <a class="nav-link text-dark" href="#productosContainer" id="placasList"><i
                                         class="fa-solid fa-angle-right"></i>
                                     Placas de Video</a>
                                 <a class="nav-link text-dark" href="#productosContainer"><i
@@ -291,15 +291,26 @@
                         <h2 class="accordion-header" id="headingThree">
                             <button class="accordion-button collapsed px-2 shadow-none" type="button"
                                 data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false"
-                                aria-controls="collapseThree">
+                                aria-controls="collapseThree" id="ramList">
                                 <i class="bi bi-memory fs-5"></i><span class="px-2">MEMORIAS RAM</span>
                             </button>
                         </h2>
                         <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
                             data-bs-parent="#accordionExample">
-                            <div class="accordion-body">Placeholder content for this accordion, which is intended to
-                                demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion
-                                body.</div>
+                            <div class="accordion-body p-1">
+                                <ul class="list-group">
+                                    <li class="list-group-item"><a class="text-decoration-none"
+                                            href="#productosContainer" id="ramList">TODOS</a></li>
+                                    <li class="list-group-item"><a class="text-decoration-none"
+                                            href="#productosContainer" id="xpg">XPG</a></li>
+                                    <li class="list-group-item border-0"><a class="text-decoration-none"
+                                            href="#productosContainer" id="viper">VIPER</a></li>
+                                    <li class="list-group-item border-0"><a class="text-decoration-none"
+                                            href="#productosContainer" id="corsair">CORSAIR</a></li>
+                                    <li class="list-group-item border-0"><a class="text-decoration-none"
+                                            href="#productosContainer" id="kingston">KINGSTON</a></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
 
@@ -307,15 +318,22 @@
                         <h2 class="accordion-header" id="headingFour">
                             <button class="accordion-button collapsed px-2 shadow-none" type="button"
                                 data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false"
-                                aria-controls="collapseFour">
+                                aria-controls="collapseFour" id="placasList">
                                 <i class="bi bi-gpu-card fs-5"></i><span class="px-2">PLACAS DE VIDEO</span>
                             </button>
                         </h2>
                         <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
                             data-bs-parent="#accordionExample">
-                            <div class="accordion-body">Placeholder content for this accordion, which is intended to
-                                demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion
-                                body.</div>
+                            <div class="accordion-body p-1">
+                                <ul class="list-group">
+                                    <li class="list-group-item"><a class="text-decoration-none"
+                                            href="#productosContainer" id="placasList">TODOS</a></li>
+                                    <li class="list-group-item"><a class="text-decoration-none"
+                                            href="#productosContainer" id="geforce">GEFORCE</a></li>
+                                    <li class="list-group-item border-0"><a class="text-decoration-none"
+                                            href="#productosContainer" id="amd">AMD</a></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
 
@@ -329,9 +347,16 @@
                         </h2>
                         <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
                             data-bs-parent="#accordionExample">
-                            <div class="accordion-body">Placeholder content for this accordion, which is intended to
-                                demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion
-                                body.</div>
+                            <div class="accordion-body p-1">
+                                <ul class="list-group">
+                                    <li class="list-group-item"><a class="text-decoration-none"
+                                            href="#productosContainer" id="microList">TODOS</a></li>
+                                    <li class="list-group-item"><a class="text-decoration-none"
+                                            href="#productosContainer" id="geforce">GEFORCE</a></li>
+                                    <li class="list-group-item border-0"><a class="text-decoration-none"
+                                            href="#productosContainer" id="amd">AMD</a></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
 
@@ -418,7 +443,7 @@
                         </table>
                     </div>
                     <div
-                        class="modal-footer border-top border-danger justify-content-center justify-content-md-between align-items-center">
+                        class="modal-footer border-top border-danger justify-content-center justify-content-xl-between align-items-center">
                         <div class="row gap-2 justify-content-center text-center">
                             <h5 class="px-0">¿Tenés un cupón de descuento?</h5>
                             <input class="col-6" type="text" placeholder="Codigo del cupón">
@@ -438,12 +463,13 @@
             <div class="modal-dialog modal-xl">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title f-gef" id="exampleModalLabel">Descripcion de tu pedido:</h5>
+                        <h5 class="modal-title f-gef" id="exampleModalLabel">Metodo de pago:</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body row justify-content-center justify-content-xl-around align-items-center"
                         id="modalContainer">
                         <!-- Tarjeta -->
+
                         <section class="tarjeta col-12 col-sm-10 col-md-9 col-lg-6 col-xl-4" id="tarjeta">
                             <div class="delantera">
                                 <div class="logo-marca" id="logo-marca">
@@ -531,6 +557,75 @@
             </div>
         </div>
     </section>
+
+    <section>
+        <button type="button" class="btn btn-danger px-5 f-ddn d-none" data-bs-toggle="modal"
+            data-bs-target="#modalFactura" id="btn-factura"></button>
+        <div class="modal fade" id="modalFactura" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true"
+            data-bs-backdrop="static" data-bs-keyboard="false">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title f-gef" id="exampleModalLabel">Tu Factura</h4>
+                        <a class="btn-close" href="../index.html"><a>
+                    </div>
+                    <div class="modal-body f-ddn">
+                        <div class="mb-3">
+                            <p class="mb-1"><b>N° de pedido:</b> 294384 - </p>
+                            <p class="mb-1"><b>Fecha del pedido:</b> <span id="fechaCompra"></span></p>
+                            <p class="mb-1"><b>Metodo de pago:</b> Credito finalizada en <b id="facturaNumero"></b></p>
+                            <p class="mb-1"><b>Titular: </b><span id="facturaNombre"></span></p>
+                        </div>
+                        <div>
+                            <h3 class="text-center text-danger">Detalles de tu Pedido:</h3>
+                            <div class="text-center" id="productosFactura">
+
+                            </div>
+                            <h4 class="text-end border-top border-1 border-danger p-2" id="totalFactura">asdasd</h4>
+                        </div>
+                        <div>
+                            <p class="fs-5"><i class="fa-solid fa-circle-check text-success"></i> Tu pedido 294384 está
+                                disponible para que lo retires en nuestro Pickup Point.</p>
+                            <p class="fs-5"><i class="fa-solid fa-circle-exclamation text-danger"></i> Tu pedido
+                                permanecerá
+                                en nuestro punto de retiro 96hs hábiles.</p>
+                            <h3 class="text-danger">Tené en cuenta que:</h3>
+                            <p class="fs-5"><i class="fa-solid fa-x text-warning"></i> No podrás cambiar los productos
+                                en el
+                                punto de retiro.</p>
+                            <p class="fs-5"><i class="fa-solid fa-x text-warning"></i> No podrás modificar los productos
+                                del
+                                pedido en el punto de retiro. Para esto deberás cancelar la compra y volver a
+                                realizarla.
+                            </p>
+                            <p class="fs-5"><i class="fa-solid fa-x text-warning"></i> No podrás agregar productos a la
+                                compra ya realizada. Deberás realizar otra compra adicional para luego retirar ambos
+                                pedidos.</p>
+                        </div>
+                        <button class="btn-danger rounded-1 text-end"><a class="nav-link text-white f-gef fs-5 p-2"
+                                href="../index.html">Regresar</a></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="d-flex flex-column justify-content-center align-items-center">
+        <div class="d-flex flex-column">
+            <img class="mx-auto mb-4" src="../img/icons/logo_svg.2fc451ee.svg" alt="" width="90px">
+            <span data-v-1c95e756="" data-text="TEAM UP. FIGHT ON."
+                class="footer-text-glitch glitch footer-glitch fs-5 f-ars mb-2">
+                TEAM
+                UP. FIGHT ON. </span>
+        </div>
+        <div class="text-white fs-3">
+            <a href="#"><i class="p-1 fa-brands fa-facebook-f"></i></a>
+            <a href="#"><i class="p-1 fa-brands fa-twitter"></i></a>
+            <a href="#"><i class="p-1 fa-brands fa-youtube"></i></a>
+            <a href="#"><i class="p-1 fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="p-1 fa-brands fa-twitch"></i></a>
+        </div>
+    </footer>
 
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../libs/bootstrap/dist/js/bootstrap.min.js"></script>

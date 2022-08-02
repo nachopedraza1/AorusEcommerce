@@ -28,10 +28,10 @@ let loadingdiv = document.getElementById("loading-div");
 setTimeout(function () {
     loadingdiv.classList.remove("show");
     body.classList.remove("overflow-hidden");
-}, 2000);
+}, 2100);
 setTimeout(function () {
     loadingdiv.classList.add("d-none")
-}, 2150);
+}, 2250);
 
 
 //----------------------------------------------------
@@ -129,9 +129,14 @@ const createProductBox = (arrayAMostrar) => {
 
 //------Mostrar Productos-------->
 const mostrarProductos = (categoria) => {
-    let filtroCategoria = productos.filter(producto => producto.categoria === categoria);
-    let filtroMarcaAmd = filtroCategoria.filter(producto => producto.marca === "amd");
-    let filtroMarcaIntel = filtroCategoria.filter(producto => producto.marca === "intel");
+    let filtroCategoria = productos.filter(producto => producto.categoria === categoria),
+        filtroMarcaAmd = filtroCategoria.filter(producto => producto.marca === "amd"),
+        filtroMarcaIntel = filtroCategoria.filter(producto => producto.marca === "intel"),
+        filtroMarcaXpg = filtroCategoria.filter(producto => producto.marca === "xpg"),
+        filtroMarcaViper = filtroCategoria.filter(producto => producto.marca === "viper"),
+        filtroMarcaCorsair = filtroCategoria.filter(producto => producto.marca === "corsair"),
+        filtroMarcaKingston = filtroCategoria.filter(producto => producto.marca === "kingston"),
+        filtroMarcaGeforce = filtroCategoria.filter(producto => producto.marca === "geforce");
 
 
     let amdFilter = document.querySelectorAll("#amd");
@@ -147,6 +152,46 @@ const mostrarProductos = (categoria) => {
         select.addEventListener("click", () => {
             productosContainer.innerHTML = "";
             createProductBox(filtroMarcaIntel);
+        });
+    });
+
+    let xpgFilter = document.querySelectorAll("#xpg");
+    xpgFilter.forEach(select => {
+        select.addEventListener("click", () => {
+            productosContainer.innerHTML = "";
+            createProductBox(filtroMarcaXpg);
+        });
+    });
+
+    let viperFilter = document.querySelectorAll("#viper");
+    viperFilter.forEach(select => {
+        select.addEventListener("click", () => {
+            productosContainer.innerHTML = "";
+            createProductBox(filtroMarcaViper);
+        });
+    });
+
+    let corsairFilter = document.querySelectorAll("#corsair");
+    corsairFilter.forEach(select => {
+        select.addEventListener("click", () => {
+            productosContainer.innerHTML = "";
+            createProductBox(filtroMarcaCorsair);
+        });
+    });
+
+    let kingstonFilter = document.querySelectorAll("#kingston");
+    kingstonFilter.forEach(select => {
+        select.addEventListener("click", () => {
+            productosContainer.innerHTML = "";
+            createProductBox(filtroMarcaKingston);
+        });
+    });
+
+    let geforceFilter = document.querySelectorAll("#geforce");
+    geforceFilter.forEach(select => {
+        select.addEventListener("click", () => {
+            productosContainer.innerHTML = "";
+            createProductBox(filtroMarcaGeforce);
         });
     });
 
@@ -270,6 +315,7 @@ const totalCarrito = () => {
                             <button id="finalizarCompra" class="btn btn-danger f-gef fs-6 text-white" data-bs-toggle="modal" data-bs-target="#modalComprar">Finalizar Compra</button>`;
 
     totalCompra.innerText = `$${totalSuma}`;
+    totalFactura.innerText = `TOTAL: $${totalSuma}`;
     let btnVaciar = document.getElementById("vaciarCarrito");
     btnVaciar.addEventListener("click", () => {
         vaciarCarrito();
@@ -329,6 +375,8 @@ const vaciarCarrito = () => {
 //-------------------------------------------------
 let motherList = document.querySelectorAll("#motherList");
 let microList = document.querySelectorAll("#microList");
+let ramList = document.querySelectorAll("#ramList");
+let placasList = document.querySelectorAll("#placasList");
 
 motherList.forEach(event => {
     event.addEventListener("click", () => {
@@ -341,6 +389,20 @@ microList.forEach(event => {
     event.addEventListener("click", () => {
         productosContainer.innerHTML = "";
         mostrarProductos("microprocesadores");
+    });
+});
+
+ramList.forEach(event => {
+    event.addEventListener("click", () => {
+        productosContainer.innerHTML = "";
+        mostrarProductos("memoriasRam");
+    });
+});
+
+placasList.forEach(event => {
+    event.addEventListener("click" , () => {
+        productosContainer.innerHTML = "";
+        mostrarProductos("placasVideo");
     });
 });
 
@@ -368,10 +430,6 @@ const mostrarFrente = () => {
     }
 }
 
-//------Guardamos la info para generar una factura al finalizar la compra------
-const numeroTarjetaFact = (clave, valor) => { sessionStorage.setItem(clave, valor) };
-const nombreFacura = (clave, valor) => { sessionStorage.setItem(clave, valor) };
-
 //-------------------------------------------------
 //-------------Input numero de tarjeta-------------
 //-------------------------------------------------
@@ -386,8 +444,7 @@ formulario.inputNumero.addEventListener("keyup", (e) => {
         .replace(/([0-9]{4})/g, '$1 ')
         // Elimina el ultimo espaciado
         .trim();
-    numeroTarjeta.textContent = valorInput
-    numeroTarjetaFact("numeroTarjeta", JSON.stringify(valorInput));
+    numeroTarjeta.textContent = valorInput;
 
     if (numeroTarjeta.textContent == "") {
         numeroTarjeta.textContent = "#### #### #### ####";
@@ -415,7 +472,6 @@ formulario.inputNombre.addEventListener("keyup", (e) => {
         .replace(/[0-9]/g, '')
 
     nombreTarjeta.textContent = valorInput;
-    nombreFacura("nombreTarjeta", JSON.stringify(valorInput));
 
     if (nombreTarjeta.textContent == "") {
         nombreTarjeta.textContent = "----------------------"
@@ -540,20 +596,38 @@ btnPagar.addEventListener("click", (e) => {
         }, 5000);
 
         setTimeout(() => {
-            window.location = "../pages/factura.html";
-            generarFactura();
+            let currentTime = new Date();
+
+            let day = currentTime.getDate(),
+                month = currentTime.getMonth() + 1,
+                year = currentTime.getFullYear(),
+                hour = currentTime.getHours(),
+                minute = currentTime.getMinutes(),
+                fecha = day + "/" + month + "/" + year + " - " + hour + ":" + minute;
+
+            let btnModal = document.getElementById("btn-factura"),
+                facturaNombre = document.getElementById("facturaNombre"),
+                facturaNumero = document.getElementById("facturaNumero"),
+                fechaCompra = document.getElementById("fechaCompra");
+
+            facturaNombre.innerText = `${formulario.inputNombre.value}`;
+            facturaNumero.innerText = `${formulario.inputNumero.value.slice(15)}`;
+            fechaCompra.innerHTML = `${fecha}`;
+
+            let productosFactura = document.getElementById("productosFactura");
+            let totalFactura = document.getElementById("totalFactura");
+            carrito.forEach(producto => {
+                let div = document.createElement("div");
+                div.innerHTML = `<h5><b>x${producto.cantidad}</b> - ${producto.nombre}</h5>`;
+                productosFactura.append(div);
+            });
+            totalCarrito();
+            btnModal.click();
+            sessionStorage.clear();
+
         }, 10000);
     }
 });
-
-
-const generarFactura = () => {
-    let digitosTarjeta = JSON.parse(sessionStorage.getItem("numeroTarjeta"));
-    let nombreTarjeta = JSON.parse(sessionStorage.getItem("nombreTarjeta"));
-    let div = document.createElement("div");
-    div.innerHTML = `<p>asdasd${digitosTarjeta}</p>`;
-    facturaSection.append(div);
-}
 
 
 

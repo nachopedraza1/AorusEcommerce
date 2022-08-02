@@ -23,5 +23,36 @@
     { "id": 21, "nombre": "MICROPROCESADOR INTEL I7 10700", "precio": 64990, "img": "../img/productos/micro-9.png", "categoria": "microprocesadores", "cantidad": 1, "marca": "intel" },
     { "id": 22, "nombre": "MICROPROCESADOR AMD RYZEN 9 5900X", "precio": 99990, "img": "../img/productos/micro-10.png", "categoria": "microprocesadores", "cantidad": 1, "marca": "amd" },
     { "id": 23, "nombre": "MICROPROCESADOR CPU INTEL CORE I9 12900", "precio": 125999, "img": "../img/productos/micro-11.png", "categoria": "microprocesadores", "cantidad": 1, "marca": "intel" },
-    { "id": 24, "nombre": "MICROPROCESADOR AMD RYZEN 9 5950X", "precio": 138990, "img": "../img/productos/micro-12.png", "categoria": "microprocesadores", "cantidad": 1, "marca": "amd" }
+    { "id": 24, "nombre": "MICROPROCESADOR AMD RYZEN 9 5950X", "precio": 138990, "img": "../img/productos/micro-12.png", "categoria": "microprocesadores", "cantidad": 1, "marca": "amd" },
+
+    { "id": 25, "nombre": "KINGSTON FURY BEAST DDR4 8GB 2666MHZ", "precio": 7469, "img": "../img/productos/ram-1.png", "categoria": "memoriasRam", "cantidad": 1, "marca": "kingston" },
+    { "id": 26, "nombre": "XPG SPECTRIX ADATA DDR4 8GB 3200MHZ", "precio": 8419, "img": "../img/productos/ram-2.png", "categoria": "memoriasRam", "cantidad": 1, "marca": "xpg" },
+    { "id": 27, "nombre": "XPG WHITE ADATA DDR4 8GB 3200MHZ", "precio": 8419, "img": "../img/productos/ram-3.png", "categoria": "memoriasRam", "cantidad": 1, "marca": "xpg" },
+    { "id": 28, "nombre": "XPG D60G ADATA DDR4 8GB 3200MHZ", "precio": 8419, "img": "../img/productos/ram-4.png", "categoria": "memoriasRam", "cantidad": 1, "marca": "xpg" },
+    { "id": 29, "nombre": "KINGSTON FURY BEAST DDR4 8GB 3200MHZ", "precio": 8529, "img": "../img/productos/ram-5.png", "categoria": "memoriasRam", "cantidad": 1, "marca": "kingston" },
+    { "id": 30, "nombre": "CORSAIR VENGEANCE DDR4 8GB 3000MHZ", "precio": 8859, "img": "../img/productos/ram-6.png", "categoria": "memoriasRam", "cantidad": 1, "marca": "corsair" },
+    { "id": 31, "nombre": "CORSAIR VENGEANCE RS DDR4 8GB 3200MHZ", "precio": 9059, "img": "../img/productos/ram-7.png", "categoria": "memoriasRam", "cantidad": 1, "marca": "corsair" },
+    { "id": 32, "nombre": "KINGSTON FURY RENEGADE DDR4 8GB 3200MHZ", "precio": 9589, "img": "../img/productos/ram-8.png", "categoria": "memoriasRam", "cantidad": 1, "marca": "kingston" },
+    { "id": 33, "nombre": "KINGSTON FURY BEAST DDR4 8GB 3600MHZ", "precio": 9599, "img": "../img/productos/ram-9.png", "categoria": "memoriasRam", "cantidad": 1, "marca": "kingston" },
+    { "id": 34, "nombre": "KINGSTON FURY BEAST DDR4 16GB 2666MHZ", "precio": 15989, "img": "../img/productos/ram-10.png", "categoria": "memoriasRam", "cantidad": 1, "marca": "kingston" },
+    { "id": 35, "nombre": "CORSAIR VENGEANCE RS DDR4 16GB 3000MHZ", "precio": 17059, "img": "../img/productos/ram-11.png", "categoria": "memoriasRam", "cantidad": 1, "marca": "corsair" },
+    { "id": 36, "nombre": "PATRIOT VIPER STEEL DDR4 16GB 3200MHZ", "precio": 17059, "img": "../img/productos/ram-12.png", "categoria": "memoriasRam", "cantidad": 1, "marca": "viper" },
+    { "id": 37, "nombre": "XPG SPECTRIX ADATA DDR4 16GB 3200MHZ", "precio": 17589, "img": "../img/productos/ram-13.png", "categoria": "memoriasRam", "cantidad": 1, "marca": "xpg" },
+    { "id": 38, "nombre": "XPG SPECTRIX ADATA DDR4 16GB 3200MHZ", "precio": 17589, "img": "../img/productos/ram-14.png", "categoria": "memoriasRam", "cantidad": 1, "marca": "xpg" },
+    { "id": 39, "nombre": "PATRIOT VIPER STEEL DDR4 16GB 3600MHZ", "precio": 18129, "img": "../img/productos/ram-15.png", "categoria": "memoriasRam", "cantidad": 1, "marca": "viper" },
+    { "id": 40, "nombre": "PATRIOT VIPER STEEL DDR4 16GB 3200MHZ", "precio": 18659, "img": "../img/productos/ram-16.png", "categoria": "memoriasRam", "cantidad": 1, "marca": "viper" },
+
+    { "id": 41, "nombre": "EVGA GTX 1660 SUPER 6GB", "precio": 84999, "img": "../img/productos/placa-1.png", "categoria": "placasVideo", "cantidad": 1, "marca": "geforce" },
+    { "id": 42, "nombre": "INNO3D NVIDIA GEFORCE RTX 3050 8GB", "precio": 89999, "img": "../img/productos/placa-2.png", "categoria": "placasVideo", "cantidad": 1, "marca": "geforce" },
+    { "id": 43, "nombre": "PALIT NVIDIA GEFORCE RTX 2060 SUPER DUAL 8GB", "precio": 99999, "img": "../img/productos/placa-3.png", "categoria": "placasVideo", "cantidad": 1, "marca": "geforce" },
+    { "id": 44, "nombre": "INNO3D NVIDIA GEFORCE RTX 3060 12GB", "precio": 124999, "img": "../img/productos/placa-4.png", "categoria": "placasVideo", "cantidad": 1, "marca": "geforce" },
+    { "id": 45, "nombre": "SAPPHIRE AMD RADEON RX 6700 XT PULSE 12GB", "precio": 124999, "img": "../img/productos/placa-5.png", "categoria": "placasVideo", "cantidad": 1, "marca": "amd" },
+    { "id": 46, "nombre": "SAPPHIRE RADEON RX 6800 NITRO+ 16G", "precio": 179999, "img": "../img/productos/placa-6.png", "categoria": "placasVideo", "cantidad": 1, "marca": "amd" },
+    { "id": 47, "nombre": "ASROCK AMD RADEON RX 6700 XT 12GB", "precio": 189999, "img": "../img/productos/placa-7.png", "categoria": "placasVideo", "cantidad": 1, "marca": "amd" },
+    { "id": 48, "nombre": "INNO3D NVIDIA GEFORCE RTX 3080 10GB", "precio": 190569, "img": "../img/productos/placa-8.png", "categoria": "placasVideo", "cantidad": 1, "marca": "geforce" },
+    { "id": 49, "nombre": "NVIDIA GEFORCE RTX 3060TI ELITE 8GB", "precio": 199999, "img": "../img/productos/placa-9.png", "categoria": "placasVideo", "cantidad": 1, "marca": "geforce" },
+    { "id": 50, "nombre": "PALIT NVIDIA GEFORCE RTX 3080 12GB", "precio": 239999, "img": "../img/productos/placa-10.png", "categoria": "placasVideo", "cantidad": 1, "marca": "geforce" },
+    { "id": 51, "nombre": "ASROCK RADEON RX 6900 XT PHANTOM 16GB", "precio": 269999, "img": "../img/productos/placa-11.png", "categoria": "placasVideo", "cantidad": 1, "marca": "amd" },
+    { "id": 52, "nombre": "GIGABYTE RADEON RX 6900 XT OC 16GB", "precio": 269999, "img": "../img/productos/placa-12.png", "categoria": "placasVideo", "cantidad": 1, "marca": "amd" }
+    
 ]

@@ -1,0 +1,85 @@
+@import "../scss/mixins";
+@import "../scss/vars";
+
+.bg-back {background-color: #232323;}
+.f-gef {font-family: geforce;}
+.f-ddn {font-family: ddnpro;}
+.f-ars {font-family: aorus;}
+.f-pri {font-family: rajdhani;}
+.box-shw {box-shadow: 0 2px 1px -1px rgb(0 0 0 / 20%), 0 1px 1px 0 rgb(0 0 0 / 14%), 0 1px 3px 0 rgb(0 0 0 / 12%);}
+.img-back {background: linear-gradient(#FFFFFF, #D6D6D6);}
+
+.logo-circle {
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    border-radius: 50%;
+    top: 9rem;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0 auto;
+}
+
+.flex-custom {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 7px;
+}
+
+.column-custom {
+    width: 48%;
+    display: flex;
+    align-items: center;
+
+    @include media-up(576px) {
+        width: 48%;
+    }
+
+    @include media-up(768px) {
+        width: 45%;
+    }
+
+    @include media-up(992px) {
+        width: 32%;
+    }
+
+    @include media-up(1200px) {
+        width: 30%;
+    }
+}
+
+.thumb {
+    position: relative;
+    width: 100%;
+    padding-bottom: 80%;
+}
+
+.img-contained {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.swal2-title{
+    font-family: ddnpro;
+}
+
+.modal-header{
+    position: relative;
+}
+.modal-header::before{
+    content: "";
+    width: 10px;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    background-color: $danger;
+    border-radius: 2px;
+}
