@@ -392,7 +392,7 @@ const totalCarrito = () => {
     let cuponBox = document.getElementById("codigoCupon");
     let btnCupon = document.getElementById("btnCupon");
     btnCupon.addEventListener("click", () => {
-        if (cuponBox.value == "asd") {
+        if (cuponBox.value == "20%offcode") {
             codigoCupon = true;
             totalCompra.innerText = `$${parseInt(totalSuma * (20 / 100))}`;
         }
