@@ -1035,6 +1035,17 @@ a:hover .fa-angle-right {
   border-radius: 2px;
 }
 
+.favorito {
+  position: absolute;
+  border: 0;
+  background: transparent;
+  color: #FF6400;
+  top: 0;
+  right: 0;
+  bottom: 90%;
+  font-size: 1.3rem;
+}
+
 /*!
  * Bootstrap v5.1.3 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors

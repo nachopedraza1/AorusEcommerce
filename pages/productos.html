@@ -54,13 +54,14 @@
                         <i class="fa fa-search"></i>
                     </button>
                 </div>
-                <ul class="subBusqueda">
+                <ul class="subBusqueda px-1">
                     <!-- Buscador -->
                 </ul>
             </div>
             <div class="d-flex align-items-center f-ddn text-white">
                 <p class="fs-5 m-0 px-1">Bienvenido/a Usuario</p>
-                <i class="fs-4 fa-solid fa-heart px-2 text-danger"></i>
+                <button class="p-0 border-0 bg-transparent" data-bs-toggle="modal"
+                data-bs-target="#modalFav"><i class="fs-4 fa-solid fa-heart px-2 text-danger"></i></button>
                 <div class="position-relative">
                     <i class="fs-4 fa-solid fa-cart-shopping px-2 text-danger" type="button" data-bs-toggle="offcanvas"
                         data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"></i>
@@ -101,22 +102,22 @@
                                             <a class="nav-link text-white" href="#productosContainer" id="microList"><i
                                                     class="fa-solid fa-angle-right"></i>
                                                 Microprocesadores</a>
-                                            <a class="nav-link text-white" href="#productosContainer"><i
+                                            <a class="nav-link text-white" href="#productosContainer" id="ramList"><i
                                                     class="fa-solid fa-angle-right"></i>
                                                 Memorias Ram</a>
-                                            <a class="nav-link text-white" href="#productosContainer"><i
+                                            <a class="nav-link text-white" href="#productosContainer" id="placasList"><i
                                                     class="fa-solid fa-angle-right"></i>
                                                 Placas de Video</a>
-                                            <a class="nav-link text-white" href="#productosContainer"><i
+                                            <a class="nav-link text-white" href="#productosContainer" id="monitoresList"><i
                                                     class="fa-solid fa-angle-right"></i>
                                                 Monitores</a>
-                                            <a class="nav-link text-white" href="#productosContainer"><i
+                                            <a class="nav-link text-white" href="#productosContainer" id="fuentesList"><i
                                                     class="fa-solid fa-angle-right"></i>
                                                 Fuentes</a>
-                                            <a class="nav-link text-white" href="#productosContainer"><i
+                                            <a class="nav-link text-white" href="#productosContainer" id="refriList"><i
                                                     class="fa-solid fa-angle-right"></i>
                                                 Refrigeracion</a>
-                                            <a class="nav-link text-white" href="#productosContainer"><i
+                                            <a class="nav-link text-white" href="#productosContainer" id="gabinetesList"><i
                                                     class="fa-solid fa-angle-right"></i>
                                                 Gabinetes</a>
                                         </div>
@@ -141,16 +142,16 @@
                                 <a class="nav-link text-dark" href="#productosContainer" id="placasList"><i
                                         class="fa-solid fa-angle-right"></i>
                                     Placas de Video</a>
-                                <a class="nav-link text-dark" href="#productosContainer"><i
+                                <a class="nav-link text-dark" href="#productosContainer" id="monitoresList"><i
                                         class="fa-solid fa-angle-right"></i>
                                     Monitores</a>
-                                <a class="nav-link text-dark" href="#productosContainer"><i
+                                <a class="nav-link text-dark" href="#productosContainer" id="fuentesList"><i
                                         class="fa-solid fa-angle-right"></i>
                                     Fuentes</a>
-                                <a class="nav-link text-dark" href="#productosContainer"><i
+                                <a class="nav-link text-dark" href="#productosContainer" id="refriList"><i
                                         class="fa-solid fa-angle-right"></i>
                                     Refrigeracion</a>
-                                <a class="nav-link text-dark" href="#productosContainer"><i
+                                <a class="nav-link text-dark" href="#productosContainer" id="gabinetesList"><i
                                         class="fa-solid fa-angle-right"></i>
                                     Gabinetes</a>
                             </ul>
@@ -194,7 +195,7 @@
                                     <i class="fa fa-search"></i>
                                 </button>
                             </div>
-                            <ul class="subBusqueda">
+                            <ul class="subBusqueda px-1">
                                 <!-- Buscador -->
                             </ul>
                         </div>
@@ -341,7 +342,7 @@
                         <h2 class="accordion-header" id="headingFive">
                             <button class="accordion-button collapsed px-2 shadow-none" type="button"
                                 data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false"
-                                aria-controls="collapseFive">
+                                aria-controls="collapseFive" id="monitoresList">
                                 <i class="bi bi-display fs-5"></i><span class="px-2">MONITORES</span>
                             </button>
                         </h2>
@@ -350,11 +351,7 @@
                             <div class="accordion-body p-1">
                                 <ul class="list-group">
                                     <li class="list-group-item"><a class="text-decoration-none"
-                                            href="#productosContainer" id="microList">TODOS</a></li>
-                                    <li class="list-group-item"><a class="text-decoration-none"
-                                            href="#productosContainer" id="geforce">GEFORCE</a></li>
-                                    <li class="list-group-item border-0"><a class="text-decoration-none"
-                                            href="#productosContainer" id="amd">AMD</a></li>
+                                            href="#productosContainer" id="monitoresList">TODOS</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -364,15 +361,18 @@
                         <h2 class="accordion-header" id="headingSix">
                             <button class="accordion-button collapsed px-2 shadow-none" type="button"
                                 data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false"
-                                aria-controls="collapseSix">
+                                aria-controls="collapseSix" id="fuentesList">
                                 <i class="bi bi-power fs-5"></i><span class="px-2">FUENTES</span>
                             </button>
                         </h2>
                         <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix"
                             data-bs-parent="#accordionExample">
-                            <div class="accordion-body">Placeholder content for this accordion, which is intended to
-                                demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion
-                                body.</div>
+                            <div class="accordion-body p-1">
+                                <ul class="list-group">
+                                    <li class="list-group-item"><a class="text-decoration-none"
+                                            href="#productosContainer" id="fuentesList">TODOS</a></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
 
@@ -380,15 +380,18 @@
                         <h2 class="accordion-header" id="headingSeven">
                             <button class="accordion-button collapsed px-2 shadow-none" type="button"
                                 data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false"
-                                aria-controls="collapseSeven">
+                                aria-controls="collapseSeven" id="refriList">
                                 <i class="bi bi-fan fs-5"></i><span class="px-2">REFRIGERACION</span>
                             </button>
                         </h2>
                         <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="-headingSeven"
                             data-bs-parent="#accordionExample">
-                            <div class="accordion-body">Placeholder content for this accordion, which is intended to
-                                demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion
-                                body.</div>
+                            <div class="accordion-body p-1">
+                                <ul class="list-group">
+                                    <li class="list-group-item"><a class="text-decoration-none"
+                                            href="#productosContainer" id="refriList">TODOS</a></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
 
@@ -396,15 +399,18 @@
                         <h2 class="accordion-header" id="headingEigth">
                             <button class="accordion-button collapsed px-2 shadow-none" type="button"
                                 data-bs-toggle="collapse" data-bs-target="#collapseEigth" aria-expanded="false"
-                                aria-controls="collapseEigth">
+                                aria-controls="collapseEigth" id="gabinetesList">
                                 <i class="bi bi-pc fs-5"></i><span class="px-2">GABINETES</span>
                             </button>
                         </h2>
                         <div id="collapseEigth" class="accordion-collapse collapse" aria-labelledby="headingEigth"
                             data-bs-parent="#accordionExample">
-                            <div class="accordion-body">Placeholder content for this accordion, which is intended to
-                                demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion
-                                body.</div>
+                            <div class="accordion-body p-1">
+                                <ul class="list-group">
+                                    <li class="list-group-item"><a class="text-decoration-none"
+                                            href="#productosContainer" id="gabinetesList">TODOS</a></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
 
@@ -430,6 +436,20 @@
     </section>
 
     <section>
+        <div class="modal fade" id="modalFav" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title f-gef" id="exampleModalLabel">Favoritos</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" id="favContainer">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="modal fade" id="modalComprar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-xl">
                 <div class="modal-content">
@@ -446,8 +466,8 @@
                         class="modal-footer border-top border-danger justify-content-center justify-content-xl-between align-items-center">
                         <div class="row gap-2 justify-content-center text-center">
                             <h5 class="px-0">¿Tenés un cupón de descuento?</h5>
-                            <input class="col-6" type="text" placeholder="Codigo del cupón">
-                            <button class="col-3 btn btn-danger f-ddn" type="button">Aplicar</button>
+                            <input class="col-6" type="text" placeholder="Codigo del cupón" id="codigoCupon">
+                            <button class="col-3 btn btn-danger f-ddn" type="button" id="btnCupon">Aplicar</button>
                         </div>
                         <div>
                             <h5 class="f-ddn">TOTAL: <b class="text-danger px-2" id="totalCompra"></b></h5>

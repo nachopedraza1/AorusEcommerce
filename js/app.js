@@ -47,12 +47,16 @@ const traerDatos = async () => {
     });
     mostrarProductos("microprocesadores");
     actualizarCarrito();
+    actualizarFav();
     totalCarrito();
 }
 traerDatos();
 
 let carrito = JSON.parse(sessionStorage.getItem("carrito")) || [];
+let favoritos = JSON.parse(sessionStorage.getItem("favoritos")) || [];
 const listaCarrito = (clave, valor) => { sessionStorage.setItem(clave, valor) };
+const addFav = (clave, valor) => { sessionStorage.setItem(clave, valor) };
+
 
 //----------------------------------------------------
 //------------------Barra de busqueda-----------------
@@ -79,7 +83,7 @@ function filtro(filters) {
                 result.innerHTML = "";
             } else {
                 result.classList.add("active");
-                result.innerHTML += `<li class ="text-danger"> ${producto.nombre} </li>`
+                result.innerHTML += `<li class="list-unstyled"><a href="../pages/productos.html"class="nav-link px-1 text-primary">${producto.nombre}</a></li>`
             }
         }
     }
@@ -96,8 +100,10 @@ let filters = document.getElementById("filters");
 let totalCarro = document.getElementById("totalCarrito");
 let totalCompra = document.getElementById("totalCompra");
 let contadores = document.querySelectorAll("#contador");
+let favContainer = document.getElementById("favContainer");
 let modalContainer = document.getElementById("modalContainer");
 let modalPagar = document.getElementById("modalPagar");
+
 
 //-------Crear Box Producto---------->
 const createProductBox = (arrayAMostrar) => {
@@ -114,6 +120,7 @@ const createProductBox = (arrayAMostrar) => {
                                 <h3 class="card-title">$${producto.precio}</h4>
                                 <p class="card-text text-center" style="font-size: 14px">${producto.nombre}</p>
                                 <button class="btn btn-primary" id="boton${producto.id}"><i class="fa-solid fa-cart-plus"></i> Añadir</button>
+                                <button class="position favorito" id="btnAddFav${producto.id}"><i class="fa-solid fa-heart-circle-plus"></i></button>
                             </div>`;
         productosContainer.append(div);
 
@@ -122,9 +129,82 @@ const createProductBox = (arrayAMostrar) => {
         boton.addEventListener("click", () => {
             agregarAlCarrito(producto.id);
         });
+
+        let btnFav = document.getElementById(`btnAddFav${producto.id}`);
+        btnFav.addEventListener("click", () => {
+            agregarFavoritos(producto.id);
+        });
     });
 }
 //------------------------------->
+
+
+
+//-------Agregar a Favoritos------>
+const agregarFavoritos = (prodId) => {
+        //-------Alerta----------->
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Producto agregado a Favoritos',
+            showConfirmButton: false,
+            timer: 2000,
+            toast: true
+        });
+        //-------Fin Alerta----------->
+    let producto = productos.find(producto => producto.id === prodId);
+    favoritos.push(producto);
+    actualizarFav();
+}
+//------------------------------->
+
+
+//-------Actualizar Favoritos------->
+const actualizarFav = () => {
+    favContainer.innerHTML = "";
+    favContainer.classList.add("d-flex", "flex-wrap");
+    favoritos.forEach(producto => {
+        let div = document.createElement("div");
+        div.className = "card column-custom col-6 col-sm-4 col-md-3"
+        div.innerHTML = `   <div class="thumb img-back">
+                                    <img src="${producto.img}" class="img-contained p-2 alt="...">
+                                </div>
+                                <div class="w-100 h-100 p-1 bg-white d-flex flex-column justify-content-between">
+                                    <p class="card-text text-center" style="font-size: 14px">${producto.nombre}</p>
+                                    <button class="position favorito" id="btnEliminarFav${producto.id}"><i class="fa-solid fa-trash-can"></i></button>
+                                </div>`;
+        favContainer.append(div);
+
+        let elimnarFavorito = document.getElementById(`btnEliminarFav${producto.id}`);
+        elimnarFavorito.addEventListener("click", () => {
+            eliminarFav(producto.id);
+        });
+    });
+    addFav("favoritos", JSON.stringify(favoritos));
+}
+//------------------------------->
+
+
+
+//-----------Eliminar Fav-------->
+const eliminarFav = (prodId) => {
+        //-------Alerta----------->
+        Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: 'Producto eliminado',
+            showConfirmButton: false,
+            timer: 2000,
+            toast: true
+        });
+        //-------Fin Alerta----------->
+    let eliminarFav = favoritos.find(producto => producto.id === prodId);
+    let indice = favoritos.indexOf(eliminarFav);
+    favoritos.splice(indice, 1);
+    actualizarFav();
+}
+//------------------------------->
+
 
 
 //------Mostrar Productos-------->
@@ -137,7 +217,6 @@ const mostrarProductos = (categoria) => {
         filtroMarcaCorsair = filtroCategoria.filter(producto => producto.marca === "corsair"),
         filtroMarcaKingston = filtroCategoria.filter(producto => producto.marca === "kingston"),
         filtroMarcaGeforce = filtroCategoria.filter(producto => producto.marca === "geforce");
-
 
     let amdFilter = document.querySelectorAll("#amd");
     amdFilter.forEach(select => {
@@ -305,17 +384,27 @@ const actualizarCarrito = () => {
 //---------------------------------->
 
 
-
+let codigoCupon = false;
 //-----------Sumar Carrito---------->
 const totalCarrito = () => {
-    let totalSuma = carrito.reduce((acc, prod) => acc + prod.precio, 0)
+    let totalSuma = carrito.reduce((acc, prod) => acc + prod.precio, 0);
+
+    let cuponBox = document.getElementById("codigoCupon");
+    let btnCupon = document.getElementById("btnCupon");
+    btnCupon.addEventListener("click", () => {
+        if (cuponBox.value == "asd") {
+            codigoCupon = true;
+            totalCompra.innerText = `$${parseInt(totalSuma * (20 / 100))}`;
+        }
+    });
+
     totalCarro.classList.add("mt-3");
     totalCarro.innerHTML = `<h4 class="f-ddn">TOTAL : <b class="text-danger">$${totalSuma}</b></h4>
                             <button id="vaciarCarrito" class="btn btn-danger f-gef fs-6 text-white">Vaciar Carrito</button>
                             <button id="finalizarCompra" class="btn btn-danger f-gef fs-6 text-white" data-bs-toggle="modal" data-bs-target="#modalComprar">Finalizar Compra</button>`;
 
     totalCompra.innerText = `$${totalSuma}`;
-    totalFactura.innerText = `TOTAL: $${totalSuma}`;
+    codigoCupon == true ? totalFactura.innerText = `TOTAL: $${parseInt(totalSuma * (20 / 100))}` : totalFactura.innerText = `TOTAL: $${totalSuma}`;
     let btnVaciar = document.getElementById("vaciarCarrito");
     btnVaciar.addEventListener("click", () => {
         vaciarCarrito();
@@ -370,13 +459,18 @@ const vaciarCarrito = () => {
 //------------------------------->
 
 
+
 //-------------------------------------------------
 //-----------------Menu Productos------------------
 //-------------------------------------------------
-let motherList = document.querySelectorAll("#motherList");
-let microList = document.querySelectorAll("#microList");
-let ramList = document.querySelectorAll("#ramList");
-let placasList = document.querySelectorAll("#placasList");
+let motherList = document.querySelectorAll("#motherList"),
+    microList = document.querySelectorAll("#microList"),
+    ramList = document.querySelectorAll("#ramList"),
+    placasList = document.querySelectorAll("#placasList"),
+    monitoresList = document.querySelectorAll("#monitoresList"),
+    fuentesList = document.querySelectorAll("#fuentesList"),
+    refriList = document.querySelectorAll("#refriList"),
+    gabinetesList = document.querySelectorAll("#gabinetesList");
 
 motherList.forEach(event => {
     event.addEventListener("click", () => {
@@ -400,11 +494,40 @@ ramList.forEach(event => {
 });
 
 placasList.forEach(event => {
-    event.addEventListener("click" , () => {
+    event.addEventListener("click", () => {
         productosContainer.innerHTML = "";
         mostrarProductos("placasVideo");
     });
 });
+
+monitoresList.forEach(event => {
+    event.addEventListener("click", () => {
+        productosContainer.innerHTML = "";
+        mostrarProductos("monitores");
+    });
+});
+
+fuentesList.forEach(event => {
+    event.addEventListener("click", () => {
+        productosContainer.innerHTML = "";
+        mostrarProductos("fuentes");
+    });
+});
+
+refriList.forEach(event => {
+    event.addEventListener("click", () => {
+        productosContainer.innerHTML = "";
+        mostrarProductos("refrigeracion");
+    });
+});
+
+gabinetesList.forEach(event => {
+    event.addEventListener("click", () => {
+        productosContainer.innerHTML = "";
+        mostrarProductos("gabinetes");
+    });
+});
+
 
 //-------------------------------------------------
 //-----------------Datos Tarjeta-------------------

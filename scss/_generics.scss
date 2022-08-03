@@ -83,3 +83,14 @@
     background-color: $danger;
     border-radius: 2px;
 }
+
+.favorito{
+    position: absolute;
+    border: 0;
+    background: transparent;
+    color: $danger;
+    top: 0;
+    right: 0;
+    bottom: 90%;
+    font-size: 1.3rem;
+}
